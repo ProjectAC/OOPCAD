@@ -111,6 +111,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\Ellipse.h" />
+    <ClInclude Include="include\Figure.h" />
+    <ClInclude Include="include\Operation.h" />
+    <ClInclude Include="include\Polygon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
