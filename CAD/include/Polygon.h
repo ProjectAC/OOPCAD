@@ -33,6 +33,6 @@ namespace ACCAD
         /* [Constructor]
          * Construct a polygon with a list of Vertices
          */
-        Polygon(std::vector<Vec2> verts);
+        Polygon(const std::vector<Vec2> &verts);
     };
 }

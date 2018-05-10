@@ -1,14 +1,12 @@
 #pragma once
 
 #include <vector>
-#include <set>
 
 namespace ACCAD
 {
-    class Image
+    class Editor
     {
     public:
-
         /* Alter each pixel to given color
          */
         void alterPixels(const std::vector<pair<Vec2, Color> > &pixels);
@@ -30,9 +28,12 @@ namespace ACCAD
         void eraseFigure(IFigure *figure);
 
     private:
+        
+        Image image;
 
-        Color **canvas;
-        std::set<IFigure*> IFigure;
-        unsigned int width, height;
+        /* This is my self-designed Stack,
+         * Not STL!!!
+         */
+        Stack<IOperation> stack; 
     };
 }
