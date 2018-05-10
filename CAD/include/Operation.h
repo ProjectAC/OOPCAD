@@ -7,10 +7,11 @@ namespace ACCAD
     public:
         /* Execute this operation
          */
-        virtual void exec() = 0;
+        virtual void exec(Image &image) = 0;
 
         /* Undo this operation
          */ 
-        virtual void undo() = 0;
+        virtual void undo(Image &image) = 0;
+        
     };
 }
