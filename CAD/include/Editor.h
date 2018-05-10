@@ -30,6 +30,8 @@ namespace ACCAD
     private:
         
         Image image;
+        Renderer renderer;
+        Loader loader;
 
         /* This is my self-designed Stack,
          * Not STL!!!
