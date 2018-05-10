@@ -5,29 +5,25 @@
 
 namespace ACCAD
 {
-	class Polygon : public IFigure
-	{
-	public:
-        struct Vertices
-        {
-            float x, y;
-        };
+    class Polygon : public IFigure
+    {
+    public:
 
-	   	/* Render this figure on the Canvas
-		 */
-		void render() override;
-
-		/* Save this figure to an output stream
-		 */ 
-		void save(std::ostream &out) override;
-
-        /* Find the nearest
-         * 
+        /* Render this figure on the Renderer
          */
+        void render(Renderer &renderer) override;
+
+        /* Save this figure to an output stream
+         */ 
+        void save(std::ostream &out) override;
+
+        /* Returns the vertices of the polygon
+         */
+        std::vector<Vec2> getAnchors() override;
 
         /* [Constructor]
          * Construct a polygon with a list of Vertices
          */
-        Polygon(std::vector<Vertices> verts);
-	};
+        Polygon(std::vector<Vec2> verts);
+    };
 }
