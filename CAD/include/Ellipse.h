@@ -21,11 +21,6 @@ namespace ACCAD
          */ 
         void load(std::istream &in) override;
 
-        /* Returns the top and right tangency points
-         * of this ellipse and the circumscribing rectangle 
-         */
-        std::vector<Vec2> getAnchors() override;
-
         /* Returns the 8 Points of its border
          * e.g, Right, TopRight, Top, TopLeft, Left, BottomLeft, Bottom, BottomRight 
          */
@@ -34,6 +29,6 @@ namespace ACCAD
         /* [Constructor]
          * Construct an ellipse with a, b, and theta
          */
-        Ellipse(float a, float b, float theta);
+        Ellipse(const Vec2 &pos, float a, float b, float theta = 0);
     };
 }

@@ -33,5 +33,6 @@ namespace ACCAD
     private:
         
         Color borderColor, innerColor;
+        Vec2 center;
     };
 }
