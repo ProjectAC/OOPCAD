@@ -30,5 +30,10 @@ namespace ACCAD
          * Construct an ellipse with a, b, and theta
          */
         Ellipse(const Vec2 &pos, float a, float b, float theta = 0);
+
+	private:
+		float a;
+		float b;
+		float theta;
     };
 }
