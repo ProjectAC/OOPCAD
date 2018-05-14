@@ -31,7 +31,7 @@ namespace ACCAD
          */
         virtual std::vector<Vec2> getBorder() = 0;
 
-    private:
+    protected:
         
         Color borderColor, innerColor;
         Vec2 center;

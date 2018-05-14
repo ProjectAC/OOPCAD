@@ -125,6 +125,7 @@
     <ClInclude Include="include\Stroke.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\definitions.cpp" />
     <ClCompile Include="src\Ellipse.cpp" />
     <ClCompile Include="src\Figure.cpp" />
   </ItemGroup>
