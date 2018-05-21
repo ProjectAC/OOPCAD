@@ -24,14 +24,14 @@ namespace ACCAD
 
         /* Get all anchor points
          */
-        virtual std::vector<Vec2> getAnchors() = 0;
+		virtual std::vector<Vec2> getAnchors();
 
         /* Returns the 8 Points of its border
          * e.g, Right, TopRight, Top, TopLeft, Left, BottomLeft, Bottom, BottomRight 
          */
         virtual std::vector<Vec2> getBorder() = 0;
 
-    private:
+    protected:
         
         Color borderColor, innerColor;
         Vec2 center;
