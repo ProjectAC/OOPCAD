@@ -50,9 +50,12 @@ namespace ACCAD
          */
         virtual void resize(int id, const Vec2 &to) = 0;
 
+        IFigure(const Vec2 & pos, const Color &cborder, const Color &cinner);
+
     protected:
         
         Vec2 center;
         Color borderColor, innerColor;
+        bool updated;
     };
 }

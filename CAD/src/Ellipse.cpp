@@ -5,6 +5,13 @@
 using namespace ACCAD;
 using namespace std;
 
+void Ellipse::render(Renderer &renderer)
+{
+    vector<Vec2> vertices;
+    for (register ) :
+        
+}
+
 void Ellipse::save(std::ostream & out)
 {
     //out << a << b << theta;
@@ -22,10 +29,10 @@ void Ellipse::load(std::istream & in)
 vector<Vec2> Ellipse::getBorder()
 {
     vector<Vec2> points;
-	for (auto d : delta)
-		points.push_back(Vec2(center.x + a * d[0], center.y + b * d[1]).rotate(center, theta));
-	/*
-   	points.push_back(Vec2(center.x + a, center.y    ).rotate(center, theta));
+    for (auto d : delta)
+        points.push_back(Vec2(center.x + a * d[0], center.y + b * d[1]).rotate(center, theta));
+    /*
+       points.push_back(Vec2(center.x + a, center.y    ).rotate(center, theta));
     points.push_back(Vec2(center.x + a, center.y + b).rotate(center, theta));
     points.push_back(Vec2(center.x    , center.y + b).rotate(center, theta));
     points.push_back(Vec2(center.x - a, center.y + b).rotate(center, theta));
@@ -33,31 +40,33 @@ vector<Vec2> Ellipse::getBorder()
     points.push_back(Vec2(center.x - a, center.y - b).rotate(center, theta));
     points.push_back(Vec2(center.x    , center.y - b).rotate(center, theta));
     points.push_back(Vec2(center.x + a, center.y - b).rotate(center, theta));
-	*/
+    */
     return points;
 }
 
 Vec2 Ellipse::getBorder(int id)
 {
-	return Vec2(center.x + a * delta[id][0], center.y + b * delta[id][1]).rotate(center, theta);
+    return Vec2(center.x + a * delta[id][0], center.y + b * delta[id][1]).rotate(center, theta);
 }
 
 void Ellipse::resize(int id, const Vec2 &to)
 {
     Vec2 oppo = getBorder((id + 4) % 8);
-	center = (to + oppo) * 0.5;
-	Vec2 newPos = (to - center).rotate(center, -theta);
+    center = (to + oppo) * 0.5;
+    Vec2 newPos = (to - center).rotate(center, -theta);
 
-	if (id != 2 && id != 6)
-		a = abs(newPos.x);
-	if (id != 0 && id != 4)
-		b = abs(newPos.y);
+    if (id != 2 && id != 6)
+        a = abs(newPos.x);
+    if (id != 0 && id != 4)
+        b = abs(newPos.y);
+    
+    updated = true;
 }
 
-Ellipse::Ellipse(const Vec2 & pos, float a, float b, float theta)
-{    
-    this->center = pos;
-    this->a = a;
-    this->b = b;
-    this->theta = theta;
+Ellipse::Ellipse(const Vec2 & pos, const Color &cborder, const Color &cinner, float a, float b, float theta) :
+    IFigure(pos, cborder, cinner),
+    a(a),
+    b(b),
+    theta(theta)
+{
 }
