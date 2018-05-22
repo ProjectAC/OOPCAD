@@ -6,13 +6,13 @@ namespace ACCAD
     {
     public:
 
-        /*
+        /* 
          */
         void init();
 
-        /*
+        /* 
          */
-        void render();
+        void render(const Color &c, const vector<int> &);
 
     };
 }
