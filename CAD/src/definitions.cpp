@@ -25,13 +25,3 @@ ostream & ACCAD::operator<<(ostream & out, const Color & color)
     return out;
 }
 
-const int ACCAD::delta[8][2] = {
-	{ 1,  0 },
-	{ 1,  1 },
-	{ 0,  1 },
-	{ -1,  1 },
-	{ -1,  0 },
-	{ -1, -1 },
-	{ 0, -1 },
-	{ 1, -1 }
-};
