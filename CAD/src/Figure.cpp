@@ -1,6 +1,9 @@
 #include "..\include\Figure.h"
+
 using namespace ACCAD;
-std::vector<Vec2> ACCAD::IFigure::getAnchors()
+using namespace std;
+
+vector<Vec2> IFigure::getAnchors()
 {
-	return std::vector<Vec2>();
+    return vector<Vec2>();
 }

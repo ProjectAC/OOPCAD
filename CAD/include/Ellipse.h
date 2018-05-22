@@ -26,14 +26,20 @@ namespace ACCAD
          */
         std::vector<Vec2> getBorder() override;
 
+        /* Rescale by dragging a border point
+         * Its opposite point should stay
+         */
+        void resize(int id, const Vec2 &to) override;
+
         /* [Constructor]
          * Construct an ellipse with a, b, and theta
          */
         Ellipse(const Vec2 &pos, float a, float b, float theta = 0);
 
-	private:
-		float a;
-		float b;
-		float theta;
+    private:
+
+        float a;
+        float b;
+        float theta;
     };
 }

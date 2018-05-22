@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "definitions.h"
+#include "Vec2.h"
 
 namespace ACCAD
 {
@@ -24,16 +25,29 @@ namespace ACCAD
 
         /* Get all anchor points
          */
-		virtual std::vector<Vec2> getAnchors();
+        virtual std::vector<Vec2> getAnchors();
 
         /* Returns the 8 Points of its border
-         * e.g, Right, TopRight, Top, TopLeft, Left, BottomLeft, Bottom, BottomRight 
+         * e.g, in polar order:
+         * 0 - Right,
+         * 1 - TopRight, 
+         * 2 - Top,
+         * 3 - TopLeft,
+         * 4 - Left,
+         * 5 - BottomLeft
+         * 6 - Bottom
+         * 7 - BottomRight 
          */
         virtual std::vector<Vec2> getBorder() = 0;
 
+        /* Rescale by dragging the <id>-th border point to <to>
+         * Its opposite point should stay still
+         */
+        virtual void resize(int id, const Vec2 &to) = 0;
+
     protected:
         
-        Color borderColor, innerColor;
         Vec2 center;
+        Color borderColor, innerColor;
     };
 }
