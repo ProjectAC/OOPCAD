@@ -1,38 +1,63 @@
 #include "..\include\Ellipse.h"
 #include "..\include\Utility.h"
+#include "..\include\"
+
 using namespace ACCAD;
 using namespace std;
 
-void ACCAD::Ellipse::save(std::ostream & out)
+void Ellipse::save(std::ostream & out)
 {
-	out << a << b << theta;
-	out << center << borderColor << innerColor;
+    //out << a << b << theta;
+    out.write(&a, sizeof(float) * 3);
+    out << center << borderColor << innerColor;
 }
 
-void ACCAD::Ellipse::load(std::istream & in)
+void Ellipse::load(std::istream & in)
 {
-	in >> a >> b >> theta;
-	in >> center >> borderColor >> innerColor;
+    //in >> a >> b >> theta;
+    in.read(&a, sizeof(float) * 3);
+    in >> center >> borderColor >> innerColor;
 }
 
-std::vector<Vec2> ACCAD::Ellipse::getBorder()
+vector<Vec2> Ellipse::getBorder()
 {
-	vector<Vec2> points;
-	points.push_back(Vec2Rotate(center, Vec2(center.x + a, center.y), theta));
-	points.push_back(Vec2Rotate(center, Vec2(center.x + a, center.y + b), theta));
-	points.push_back(Vec2Rotate(center, Vec2(center.x, center.y + b), theta));
-	points.push_back(Vec2Rotate(center, Vec2(center.x - a, center.y + b), theta));
-	points.push_back(Vec2Rotate(center, Vec2(center.x - a, center.y), theta));
-	points.push_back(Vec2Rotate(center, Vec2(center.x - a, center.y - b), theta));
-	points.push_back(Vec2Rotate(center, Vec2(center.x, center.y - b), theta));
-	points.push_back(Vec2Rotate(center, Vec2(center.x + a, center.y - b), theta));
-	return points;
+    vector<Vec2> points;
+	for (auto d : delta)
+		points.push_back(Vec2(center.x + a * d[0], center.y + b * d[1]).rotate(center, theta));
+	/*
+   	points.push_back(Vec2(center.x + a, center.y    ).rotate(center, theta));
+    points.push_back(Vec2(center.x + a, center.y + b).rotate(center, theta));
+    points.push_back(Vec2(center.x    , center.y + b).rotate(center, theta));
+    points.push_back(Vec2(center.x - a, center.y + b).rotate(center, theta));
+    points.push_back(Vec2(center.x - a, center.y    ).rotate(center, theta));
+    points.push_back(Vec2(center.x - a, center.y - b).rotate(center, theta));
+    points.push_back(Vec2(center.x    , center.y - b).rotate(center, theta));
+    points.push_back(Vec2(center.x + a, center.y - b).rotate(center, theta));
+	*/
+    return points;
 }
 
-ACCAD::Ellipse::Ellipse(const Vec2 & pos, float a, float b, float theta)
-{	
-	this->center = pos;
-	this->a = a;
-	this->b = b;
-	this->theta = theta;
+Vec2 Ellipse::getBorder(int id)
+{
+	return points.push_back(Vec2(center.x + a * d[id], center.y + b * d[id]).rotate(center, theta));
+}
+
+void resize(int id, const Vec2 &to)
+{
+    Vec2 oppo = getBorder((id + 4) % 8);
+	center = (to + oppo) * 0.5;
+	Vec2 newPos = (to - center).rotate(center, -theta);
+
+	if (id != 2 && id != 6)
+		a = abs(newPos.x);
+	if (id != 0 && id != 4)
+		b = abs(newPos.y);
+}
+
+Ellipse::Ellipse(const Vec2 & pos, float a, float b, float theta)
+{    
+    this->center = pos;
+    this->a = a;
+    this->b = b;
+    this->theta = theta;
 }
