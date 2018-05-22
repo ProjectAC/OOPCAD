@@ -124,12 +124,14 @@
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Stroke.h" />
     <ClInclude Include="include\Utility.h" />
+    <ClInclude Include="include\Vec2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\definitions.cpp" />
     <ClCompile Include="src\Ellipse.cpp" />
     <ClCompile Include="src\Figure.cpp" />
     <ClCompile Include="src\Utility.cpp" />
+    <ClCompile Include="src\Vec2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
