@@ -31,9 +31,9 @@ namespace ACCAD
          */
         Ellipse(const Vec2 &pos, float a, float b, float theta = 0);
 
-	private:
-		float a;
-		float b;
-		float theta;
+    private:
+        float a;
+        float b;
+        float theta;
     };
 }
