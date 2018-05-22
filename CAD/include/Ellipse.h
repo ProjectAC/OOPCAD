@@ -26,6 +26,10 @@ namespace ACCAD
          */
         std::vector<Vec2> getBorder() override;
 
+        /* Returns the <id>-th Point of its border
+         */
+        Vec2 getBorder(int id) override;
+
         /* Rescale by dragging a border point
          * Its opposite point should stay
          */

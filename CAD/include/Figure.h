@@ -40,6 +40,10 @@ namespace ACCAD
          */
         virtual std::vector<Vec2> getBorder() = 0;
 
+        /* Returns the <id>-th Point of its border
+         */
+        virtual Vec2 getBorder(int id) = 0;
+
         /* Rescale by dragging the <id>-th border point to <to>
          * Its opposite point should stay still
          */
