@@ -111,7 +111,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\IFigure.h" />
+    <ClInclude Include="include\Alternation.h" />
+    <ClInclude Include="include\Creation.h" />
+    <ClInclude Include="include\definitions.h" />
+    <ClInclude Include="include\Editor.h" />
+    <ClInclude Include="include\Ellipse.h" />
+    <ClInclude Include="include\Figure.h" />
+    <ClInclude Include="include\Image.h" />
+    <ClInclude Include="include\Loader.h" />
+    <ClInclude Include="include\Operation.h" />
+    <ClInclude Include="include\Polygon.h" />
+    <ClInclude Include="include\Renderer.h" />
+    <ClInclude Include="include\Stroke.h" />
+    <ClInclude Include="include\Utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\definitions.cpp" />
+    <ClCompile Include="src\Ellipse.cpp" />
+    <ClCompile Include="src\Figure.cpp" />
+    <ClCompile Include="src\Utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

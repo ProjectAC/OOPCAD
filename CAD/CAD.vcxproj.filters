@@ -22,4 +22,59 @@
       <Filter>头文件\Figures</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Ellipse.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Figure.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Operation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Polygon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Alternation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Creation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\definitions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Editor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Loader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Renderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Stroke.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utility.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Ellipse.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Figure.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\definitions.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utility.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
