@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "..\include\Figure.h"
+#include "../include/Figure.h"
 
 using namespace ACCAD;
 using namespace std;

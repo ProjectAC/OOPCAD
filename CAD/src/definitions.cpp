@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "..\include\definitions.h"
+#include "../include/definitions.h"
 
 using namespace std;
 using namespace ACCAD;
