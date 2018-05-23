@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "../include/Vec2.h"
 
 using namespace ACCAD;

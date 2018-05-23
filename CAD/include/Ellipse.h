@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Figure.h"
+#include "definitions.h"
 #include <vector>
 
 namespace ACCAD
@@ -45,5 +46,6 @@ namespace ACCAD
         float a;
         float b;
         float theta;
+        static const float RENDER_DELTA;
     };
 }

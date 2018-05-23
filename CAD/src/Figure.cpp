@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "..\include\Figure.h"
 
 using namespace ACCAD;
@@ -7,7 +9,6 @@ vector<Vec2> IFigure::getAnchors()
 {
     return vector<Vec2>();
 }
-
 
 IFigure::IFigure(const Vec2 & pos, const Color &cborder, const Color &cinner) : 
     center(pos), 

@@ -3,6 +3,7 @@
 #include <vector>
 #include "definitions.h"
 #include "Vec2.h"
+#include <Windows.h>
 
 namespace ACCAD
 {
@@ -13,7 +14,7 @@ namespace ACCAD
         /* Initialize the renderer
          * Maybe it'll need a Handle of a window?
          */
-        void init();
+        void init(HWND hWnd);
 
         /* Render a figure
          */
@@ -22,5 +23,10 @@ namespace ACCAD
         /* Render the background
          */
 
+    //private:
+
+        HWND hWnd;
+        HDC hDC;
+        HGLRC hRC;
     };
 }

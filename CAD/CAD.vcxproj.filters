@@ -13,68 +13,114 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\Figures">
-      <UniqueIdentifier>{29e446e9-5a00-42cf-ba89-065806142221}</UniqueIdentifier>
+    <Filter Include="头文件\include">
+      <UniqueIdentifier>{99c719fb-5b7f-43fd-8248-37f7362b45c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\src">
+      <UniqueIdentifier>{0bb3d80d-2471-4d2f-ad29-1f1b3e8bd429}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\IFigure.h">
-      <Filter>头文件\Figures</Filter>
-    </ClInclude>
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Ellipse.h">
+    <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\Figure.h">
+    <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\Operation.h">
+    <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\Polygon.h">
+    <ClInclude Include="CAD.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="include\Alternation.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\include</Filter>
     </ClInclude>
     <ClInclude Include="include\Creation.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\include</Filter>
     </ClInclude>
     <ClInclude Include="include\definitions.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\include</Filter>
     </ClInclude>
     <ClInclude Include="include\Editor.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Ellipse.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Figure.h">
+      <Filter>头文件\include</Filter>
     </ClInclude>
     <ClInclude Include="include\Image.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\include</Filter>
     </ClInclude>
     <ClInclude Include="include\Loader.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Operation.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Polygon.h">
+      <Filter>头文件\include</Filter>
     </ClInclude>
     <ClInclude Include="include\Renderer.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\include</Filter>
     </ClInclude>
     <ClInclude Include="include\Stroke.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\include</Filter>
     </ClInclude>
     <ClInclude Include="include\Utility.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vec2.h">
+      <Filter>头文件\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Ellipse.cpp">
+    <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Figure.cpp">
+    <ClCompile Include="CAD.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\definitions.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Ellipse.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Figure.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer.cpp">
+      <Filter>源文件\src</Filter>
     </ClCompile>
     <ClCompile Include="src\Utility.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Vec2.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CAD.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="CAD.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\readme.md">
+      <Filter>源文件\src</Filter>
+    </None>
   </ItemGroup>
 </Project>

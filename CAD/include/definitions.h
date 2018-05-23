@@ -15,5 +15,16 @@ namespace ACCAD
     std::istream& operator>>(std::istream& in, Color& color);
     std::ostream& operator<<(std::ostream& out, const Color& color);
 
-    const int delta[8][2];
+	const int delta[8][2] = {
+        { 1,  0 },
+        { 1,  1 },
+        { 0,  1 },
+        { -1,  1 },
+        { -1,  0 },
+        { -1, -1 },
+        { 0, -1 },
+        { 1, -1 }
+    };
+
+    const float PI = 3.1415926535f;
 }

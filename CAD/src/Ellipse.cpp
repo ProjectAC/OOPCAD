@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "..\include\Ellipse.h"
 #include "..\include\Utility.h"
 #include "..\include\definitions.h"
@@ -5,11 +7,14 @@
 using namespace ACCAD;
 using namespace std;
 
+const float Ellipse::RENDER_DELTA = PI / 200;
+
 void Ellipse::render(Renderer &renderer)
 {
     vector<Vec2> vertices;
-    for (register ) :
-        
+    for (register float i = 0, pi2 = 2 * PI; i < pi2; i += RENDER_DELTA)
+        vertices.push_back(center + Vec2(cos(i) * a, sin(i) * b));
+    renderer.render(center, theta, borderColor, innerColor, vertices);
 }
 
 void Ellipse::save(std::ostream & out)
@@ -31,16 +36,6 @@ vector<Vec2> Ellipse::getBorder()
     vector<Vec2> points;
     for (auto d : delta)
         points.push_back(Vec2(center.x + a * d[0], center.y + b * d[1]).rotate(center, theta));
-    /*
-       points.push_back(Vec2(center.x + a, center.y    ).rotate(center, theta));
-    points.push_back(Vec2(center.x + a, center.y + b).rotate(center, theta));
-    points.push_back(Vec2(center.x    , center.y + b).rotate(center, theta));
-    points.push_back(Vec2(center.x - a, center.y + b).rotate(center, theta));
-    points.push_back(Vec2(center.x - a, center.y    ).rotate(center, theta));
-    points.push_back(Vec2(center.x - a, center.y - b).rotate(center, theta));
-    points.push_back(Vec2(center.x    , center.y - b).rotate(center, theta));
-    points.push_back(Vec2(center.x + a, center.y - b).rotate(center, theta));
-    */
     return points;
 }
 

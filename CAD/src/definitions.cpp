@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "..\include\definitions.h"
 
 using namespace std;
@@ -24,14 +26,3 @@ ostream & ACCAD::operator<<(ostream & out, const Color & color)
     out.write((const char*)&(color.r), sizeof(char) * 4);
     return out;
 }
-
-const int ACCAD::delta[8][2] = {
-    { 1,  0 },
-    { 1,  1 },
-    { 0,  1 },
-    { -1,  1 },
-    { -1,  0 },
-    { -1, -1 },
-    { 0, -1 },
-    { 1, -1 }
-};
