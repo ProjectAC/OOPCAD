@@ -38,7 +38,7 @@ void Renderer::render(const Vec2 &center, float theta, const Color &cborder, con
     glPushMatrix();
 
     glTranslatef(center.x, center.y, 0);
-    glRotatef(theta, 0, 0, 1);
+    glRotatef(theta / PI * 180, 0, 0, 1);
 
     glColor4ub(cborder.r, cborder.g, cborder.b, cborder.a);
     glBegin(GL_LINE_LOOP);

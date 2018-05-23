@@ -30,6 +30,11 @@ namespace ACCAD
          */
         std::vector<Vec2> getBorder() override;
 
+        /* Rescale by dragging the <id>-th border point to <to>
+        * Its opposite point should stay still
+        */
+        virtual void resize(int id, const Vec2 &to) = 0;
+
         /* [Constructor]
          * Construct a polygon with a list of Vertices
          */

@@ -164,6 +164,7 @@
     <ClCompile Include="src\definitions.cpp" />
     <ClCompile Include="src\Ellipse.cpp" />
     <ClCompile Include="src\Figure.cpp" />
+    <ClCompile Include="src\Polygon.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Utility.cpp" />
     <ClCompile Include="src\Vec2.cpp" />
