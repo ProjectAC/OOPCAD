@@ -5,13 +5,20 @@
 using namespace ACCAD;
 using namespace std;
 
-vector<Vec2> IFigure::getAnchors()
+FigureType IFigure::getType()
 {
-    return vector<Vec2>();
+    return UNKNOWN;
 }
 
-IFigure::IFigure(const Vec2 & pos, const Color &cborder, const Color &cinner) : 
-    center(pos), 
+void IFigure::rotate(int id, const Vec2 &to)
+{
+    Vec2 tmp = to - center;
+    theta = atan2(tmp.y, tmp.x);
+}
+
+IFigure::IFigure(const Vec2 & center, float theta, const Color &cborder, const Color &cinner) : 
+    center(center), 
+    theta(theta),
     borderColor(cborder),
     innerColor(cinner),
     updated(false)

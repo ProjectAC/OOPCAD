@@ -36,16 +36,19 @@ namespace ACCAD
          */
         void resize(int id, const Vec2 &to) override;
 
+        /* Returns the TYPE (enum FigureType) of this Figure
+        */
+        FigureType getType() override;
+
         /* [Constructor]
          * Construct an ellipse with a, b, and theta
          */
-        Ellipse::Ellipse(const Vec2 & pos, const Color &cborder, const Color &cinner, float a, float b, float theta);
+        Ellipse::Ellipse(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner, float a, float b);
 
     private:
 
         float a;
         float b;
-        float theta;
         static const float RENDER_DELTA;
     };
 }

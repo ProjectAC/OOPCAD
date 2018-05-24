@@ -19,4 +19,9 @@ namespace ACCAD
     std::istream& operator>>(std::istream& in, Vec2& vec2);
     std::ostream& operator<<(std::ostream& out, const Vec2& vec2);
     float eucDist(const Vec2 &a, const Vec2 &b);
+
+    struct Vec2i
+    {
+        int x, y;
+    };
 }

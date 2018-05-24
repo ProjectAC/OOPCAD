@@ -132,7 +132,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow, Renderer &renderer)
    hInst = hInstance; // 将实例句柄存储在全局变量中
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      256, 256, 256, 256, nullptr, nullptr, hInstance, nullptr);
+      256, 660, 256, 480, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
