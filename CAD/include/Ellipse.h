@@ -43,7 +43,7 @@ namespace ACCAD
         /* [Constructor]
          * Construct an ellipse with a, b, and theta
          */
-        Ellipse::Ellipse(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner, float a, float b);
+        Ellipse(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner, float a, float b);
 
     private:
 
