@@ -19,9 +19,8 @@ ACCAD::Stroke::Stroke(const std::vector<std::pair<Vec2i, Color>>& origin, const 
 {
     this->origin = origin;
     this->target.resize(origin.size());
-    transform(this->target.begin(), this->target.end(), this->target.begin(), 
-        [target](pair<Vec2i, Color> org)->pair<Vec2i, Color>
-        {
-            return pair<Vec2i, Color>(org.first,target);
-        });
+    for (auto item : origin)
+    {
+        this->target.push_back({ item.first, target });
+    }
 }
