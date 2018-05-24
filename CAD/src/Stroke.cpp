@@ -15,13 +15,13 @@ void ACCAD::Stroke::undo(Image & image)
     image.alterPixels(origin);
 }
 
-ACCAD::Stroke::Stroke(const std::vector<std::pair<Vec2, Color>>& origin, const Color & target)
+ACCAD::Stroke::Stroke(const std::vector<std::pair<Vec2i, Color>>& origin, const Color & target)
 {
     this->origin = origin;
     this->target.resize(origin.size());
     transform(this->target.begin(), this->target.end(), this->target.begin(), 
-        [target](pair<Vec2, Color> org)->pair<Vec2, Color>
+        [target](pair<Vec2i, Color> org)->pair<Vec2i, Color>
         {
-            return pair<Vec2, Color>(org.first,target);
+            return pair<Vec2i, Color>(org.first,target);
         });
 }

@@ -1,6 +1,6 @@
-#include "stdafx.h"
+#include "../stdafx.h"
 
 #include <math.h>
-#include "..\include\Utility.h"
+#include "../include/Utility.h"
 
 using namespace ACCAD;

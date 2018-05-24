@@ -23,16 +23,29 @@ namespace ACCAD
 
         /* Returns the vertices of the polygon
          */
-        std::vector<Vec2> getAnchors() override;
+        std::vector<Vec2> getAnchors();
 
         /* Returns the 8 Points of its border
          * e.g, Right, TopRight, Top, TopLeft, Left, BottomLeft, Bottom, BottomRight 
          */
         std::vector<Vec2> getBorder() override;
 
+        /* Rescale by dragging the <id>-th border point to <to>
+        * Its opposite point should stay still
+        */
+        void resize(int id, const Vec2 &to) override;
+
+        /* Returns the TYPE (enum FigureType) of this Figure
+        */
+        FigureType getType() override;
+
         /* [Constructor]
          * Construct a polygon with a list of Vertices
          */
-        Polygon(const Vec2 &pos, const std::vector<Vec2> &verts, float theta);
+        Polygon(const Vec2 &pos, float theta, const Color &cborder, const Color &cinner, const std::vector<Vec2> &verts);
+
+    private:
+        
+        vector<Vec2> vertices;
     };
 }

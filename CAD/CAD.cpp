@@ -25,7 +25,7 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 Renderer renderer;
-ACCAD::Ellipse e({ 0, 0 }, { 255, 0, 0, 255 }, { 0, 0, 0, 0 }, 0.5, 0.5, 0);
+ACCAD::Ellipse e({ 0, 0 }, { 255, 0, 0, 255 }, { 0, 0, 0, 0 }, 0.4, 0.4, 3.1415926f / 4);
 
 void mainloop()
 {
@@ -132,7 +132,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow, Renderer &renderer)
    hInst = hInstance; // 将实例句柄存储在全局变量中
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      256, 660, 256, 480, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
@@ -184,6 +184,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: 在此处添加使用 hdc 的任何绘图代码...
             EndPaint(hWnd, &ps);
+        }
+        break;
+    case WM_SIZE:
+        {
+            
         }
         break;
     case WM_DESTROY:

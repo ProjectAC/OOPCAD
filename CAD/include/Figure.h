@@ -8,6 +8,13 @@
 
 namespace ACCAD
 {
+    enum FigureType
+    {
+        UNKNOWN,
+        ELLIPSE,
+        POLYGON
+    };
+
     class IFigure
     {
     public:
@@ -24,9 +31,9 @@ namespace ACCAD
          */ 
         virtual void load(std::istream &in) = 0;
 
-        /* Get all anchor points
+        /* Returns the TYPE (enum FigureType) of this Figure
          */
-        virtual std::vector<Vec2> getAnchors();
+        virtual FigureType getType();
 
         /* Returns the 8 Points of its border
          * e.g, in polar order:
@@ -50,10 +57,13 @@ namespace ACCAD
          */
         virtual void resize(int id, const Vec2 &to) = 0;
 
-        IFigure(const Vec2 & pos, const Color &cborder, const Color &cinner);
+        void rotate(int id, const Vec2 &to);
+
+        IFigure(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner);
 
     protected:
-        
+
+        float theta;
         Vec2 center;
         Color borderColor, innerColor;
         bool updated;
