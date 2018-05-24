@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "../stdafx.h"
 
 #include "../include/Vec2.h"
 
@@ -59,4 +59,10 @@ Vec2 Vec2::rotate(const Vec2 & center, float theta)
 float ACCAD::eucDist(const Vec2 &a, const Vec2 &b)
 {
     return (a - b).length();
+}
+
+ACCAD::Vec2i::Vec2i(int x, int y)
+{
+    this->x = x;
+    this->y = y;
 }

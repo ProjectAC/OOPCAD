@@ -1,8 +1,8 @@
-#include "stdafx.h"
+#include "../stdafx.h"
 
-#include "..\include\Ellipse.h"
-#include "..\include\Utility.h"
-#include "..\include\definitions.h"
+#include "../include/Ellipse.h"
+#include "../include/Utility.h"
+#include "../include/definitions.h"
 
 using namespace ACCAD;
 using namespace std;
@@ -19,16 +19,18 @@ void Ellipse::render(Renderer &renderer)
 
 void Ellipse::save(std::ostream & out)
 {
-    //out << a << b << theta;
-    out.write((const char *)&a, sizeof(float) * 3);
+    out.write((const char *)&theta, sizeof(float));
     out << center << borderColor << innerColor;
+    out.write((const char *)&a, sizeof(float));
+    out.write((const char *)&b, sizeof(float));
 }
 
 void Ellipse::load(std::istream & in)
 {
-    //in >> a >> b >> theta;
-    in.read((char *)&a, sizeof(float) * 3);
+    in.read((char *)&theta, sizeof(float));
     in >> center >> borderColor >> innerColor;
+    in.read((char *)&a, sizeof(float));
+    in.read((char *)&b, sizeof(float));
 }
 
 vector<Vec2> Ellipse::getBorder()
@@ -58,10 +60,14 @@ void Ellipse::resize(int id, const Vec2 &to)
     updated = true;
 }
 
-Ellipse::Ellipse(const Vec2 & pos, const Color &cborder, const Color &cinner, float a, float b, float theta) :
-    IFigure(pos, cborder, cinner),
+FigureType Ellipse::getType()
+{
+    return ELLIPSE;
+}
+
+Ellipse::Ellipse(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner, float a, float b) :
+    IFigure(pos, theta, cborder, cinner),
     a(a),
-    b(b),
-    theta(theta)
+    b(b)
 {
 }

@@ -104,7 +104,7 @@
     <ClCompile Include="src\Vec2.cpp">
       <Filter>源文件\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Stroke.cpp">
+    <ClCompile Include="src\Polygon.cpp">
       <Filter>源文件\src</Filter>
     </ClCompile>
   </ItemGroup>

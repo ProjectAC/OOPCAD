@@ -5,6 +5,7 @@
 #include "Vec2.h"
 #include "definitions.h"
 #include "Figure.h"
+#include "Polygon.h"
 
 namespace ACCAD
 {
@@ -14,19 +15,19 @@ namespace ACCAD
 
         /* Alter each pixel to given color
          */
-        void alterPixels(const std::vector<std::pair<Vec2, Color> > &pixels);
+        void alterPixels(const std::vector<std::pair<Vec2i, Color> > &pixels);
 
         /* Alter all pixels to the same color
          */
-        void alterPixels(const std::vector<Vec2> &pixels, const Color &color);
+        void alterPixels(const std::vector<Vec2i> &pixels, const Color &color);
 
         /* Insert a figure
          */
         void insertFigure(IFigure *figure);
 
-        /* Alter an Anchor of a figure
+        /* Alter an Anchor of a Polygon
          */
-        void alterFigure(IFigure *figure, int anchorId, const Vec2 &from, const Vec2 &to);
+        void alterFigure(Polygon *figure, int anchorId, const Vec2 &from, const Vec2 &to);
 
         /* Erase a figure
          */
@@ -35,7 +36,7 @@ namespace ACCAD
     private:
 
         Color **canvas;
-        std::set<IFigure*> IFigure;
+        std::vector<IFigure*> figures;
         unsigned int width, height;
     };
 }
