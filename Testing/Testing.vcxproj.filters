@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\CADsrc">
+      <UniqueIdentifier>{b4b0aa9e-5dbe-449d-9fec-921c80ccdc12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\CADinclude">
+      <UniqueIdentifier>{caf964fa-df0e-4b8d-bdcb-c9f5122307d2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Testing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CAD\src\definitions.cpp">
+      <Filter>源文件\CADsrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CAD\src\Ellipse.cpp">
+      <Filter>源文件\CADsrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CAD\src\Figure.cpp">
+      <Filter>源文件\CADsrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CAD\src\Renderer.cpp">
+      <Filter>源文件\CADsrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CAD\src\Stroke.cpp">
+      <Filter>源文件\CADsrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CAD\src\Utility.cpp">
+      <Filter>源文件\CADsrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CAD\src\Vec2.cpp">
+      <Filter>源文件\CADsrc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CAD\include\Alternation.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Creation.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\definitions.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Editor.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Ellipse.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Figure.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Image.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Loader.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Operation.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Polygon.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Renderer.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Stroke.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Utility.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CAD\include\Vec2.h">
+      <Filter>头文件\CADinclude</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\CAD\src\readme.md">
+      <Filter>源文件\CADsrc</Filter>
+    </None>
+  </ItemGroup>
+</Project>

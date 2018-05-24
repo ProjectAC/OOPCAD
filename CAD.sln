@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CAD", "CAD\CAD.vcxproj", "{2C76708E-65B1-4C09-B367-B15C315FF7A8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Testing", "Testing\Testing.vcxproj", "{532239FB-DFEB-43F4-8380-7B642B767183}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -23,15 +25,24 @@ Global
 		{2C76708E-65B1-4C09-B367-B15C315FF7A8}.Release|x64.Build.0 = Release|x64
 		{2C76708E-65B1-4C09-B367-B15C315FF7A8}.Release|x86.ActiveCfg = Release|Win32
 		{2C76708E-65B1-4C09-B367-B15C315FF7A8}.Release|x86.Build.0 = Release|Win32
+		{532239FB-DFEB-43F4-8380-7B642B767183}.Debug|x64.ActiveCfg = Debug|x64
+		{532239FB-DFEB-43F4-8380-7B642B767183}.Debug|x64.Build.0 = Debug|x64
+		{532239FB-DFEB-43F4-8380-7B642B767183}.Debug|x86.ActiveCfg = Debug|Win32
+		{532239FB-DFEB-43F4-8380-7B642B767183}.Debug|x86.Build.0 = Debug|Win32
+		{532239FB-DFEB-43F4-8380-7B642B767183}.Release|x64.ActiveCfg = Release|x64
+		{532239FB-DFEB-43F4-8380-7B642B767183}.Release|x64.Build.0 = Release|x64
+		{532239FB-DFEB-43F4-8380-7B642B767183}.Release|x86.ActiveCfg = Release|Win32
+		{532239FB-DFEB-43F4-8380-7B642B767183}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2C76708E-65B1-4C09-B367-B15C315FF7A8} = {570C0DE4-CD93-4727-A689-43220ECC780E}
+		{532239FB-DFEB-43F4-8380-7B642B767183} = {570C0DE4-CD93-4727-A689-43220ECC780E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {05E36908-36F3-4865-89E4-215C323D2381}
 		        SolutionGuid = {7F40E5CD-9988-447B-8D75-79E6BD17CEBA}
+		SolutionGuid = {05E36908-36F3-4865-89E4-215C323D2381}
 	EndGlobalSection
 EndGlobal
