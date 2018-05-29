@@ -29,14 +29,22 @@ namespace ACCAD
          * e.g, Right, TopRight, Top, TopLeft, Left, BottomLeft, Bottom, BottomRight 
          */
         std::vector<Vec2> getBorder() override;
+        
+        /* Returns the <id>-th Point of its border
+         */
+        Vec2 getBorder(int id) override;
 
         /* Rescale by dragging the <id>-th border point to <to>
-        * Its opposite point should stay still
-        */
+         * Its opposite point should stay still
+         */
         void resize(int id, const Vec2 &to) override;
 
+        /* Move an anchor point
+         */
+        void alter(int id, const Vec2 &to);
+
         /* Returns the TYPE (enum FigureType) of this Figure
-        */
+         */
         FigureType getType() override;
 
         /* [Constructor]
@@ -45,7 +53,10 @@ namespace ACCAD
         Polygon(const Vec2 &pos, float theta, const Color &cborder, const Color &cinner, const std::vector<Vec2> &verts);
 
     private:
+
+        void reGen();
         
-        vector<Vec2> vertices;
+        std::vector<Vec2> vertices;
+        float top, bottom, left, right;
     };
 }
