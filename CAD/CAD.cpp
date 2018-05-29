@@ -53,7 +53,7 @@ void mainloop()
 
         SwapBuffers(hdc);
 
-        tmp += 0.01;
+        tmp += 0.01f;
 
         Sleep(10);
     }
