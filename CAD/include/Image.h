@@ -30,9 +30,9 @@ namespace ACCAD
          */
         void alterFigure(Polygon *figure, int anchorId, const Vec2 &to);
 
-        /* Resize an ellipse
+        /* Resize a figure
          */
-        void alterFigure(Ellipse *figure, int anchorId, const Vec2 &to);
+        void resizeFigure(IFigure *figure, int anchorId, const Vec2 &to);
 
         /* Erase a figure
          */
