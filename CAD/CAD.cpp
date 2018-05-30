@@ -5,8 +5,10 @@
 #include "CAD.h"
 #include "include/Renderer.h"
 #include "include/Ellipse.h"
+#include "include/Polygon.h"
 #include <GL/freeglut.h>
 #include <thread>
+#include <vector>
 
 using namespace std;
 using namespace ACCAD;
@@ -18,20 +20,24 @@ HINSTANCE hInst;                                // 当前实例
 WCHAR szTitle[MAX_LOADSTRING];                  // 标题栏文本
 WCHAR szWindowClass[MAX_LOADSTRING];            // 主窗口类名
 
+ACCAD::IFigure *t;
+Renderer renderer;
+
 // 此代码模块中包含的函数的前向声明: 
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int, Renderer&);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-Renderer renderer;
-ACCAD::Ellipse e({ 0, 0 }, { 255, 0, 0, 255 }, { 0, 0, 0, 0 }, 0.4, 0.4, 3.1415926f / 4);
-
 void mainloop()
 {
     float r = 1;
 
     renderer.init(renderer.hWnd);
+
+    gluOrtho2D(-2, 2, -2, 2);
+
+    float tmp = 0;
 
     while (true)
     {
@@ -40,11 +46,14 @@ void mainloop()
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        e.render(renderer);
+        ((ACCAD::Polygon*)t)->alter(0, { sin(tmp), sin(tmp) });
+        t->render(renderer);
         
         glFlush();
 
         SwapBuffers(hdc);
+
+        tmp += 0.01f;
 
         Sleep(10);
     }
@@ -64,6 +73,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_CAD, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
+
+    std::vector<Vec2> verts;
+    verts.push_back({ 1, 1 });
+    verts.push_back({ -1, 1 });
+    verts.push_back({ -1,-1 });
+    verts.push_back({ 1,-1 });
+    ACCAD::Polygon p({ 0, 0 }, 0, { 0, 0, 0, 255 }, { 0, 255, 255, 255 }, verts);
+    t = &p;
 
     // 执行应用程序初始化: 
     if (!InitInstance (hInstance, nCmdShow, renderer))
@@ -132,7 +149,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow, Renderer &renderer)
    hInst = hInstance; // 将实例句柄存储在全局变量中
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      256, 660, 256, 480, nullptr, nullptr, hInstance, nullptr);
+      256, 256, 640, 490, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
