@@ -1,5 +1,5 @@
 #include "../include/Image.h"
-
+#include <algorithm>
 using namespace std;
 using namespace ACCAD;
 
@@ -20,11 +20,18 @@ void Image::insertFigure(IFigure *figure)
     figures.push_back(figure);
 }
 
-void Image::alterFigure(Polygon *figure, int anchorId, const Vec2 &from, const Vec2 &to)
+void Image::alterFigure(Polygon *figure, int anchorId, const Vec2 &to)
 {
+    figure->
+}
+
+void Image::alterFigure(Ellipse * figure, int anchorId, const Vec2 & to)
+{
+
 }
 
 void Image::eraseFigure(IFigure *figure)
 {
-
+    auto iter = find(figures.begin(), figures.end(), figure);
+    figures.erase(iter);
 }
