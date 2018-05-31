@@ -13,6 +13,8 @@ namespace ACCAD
     class Image
     {
     public:
+        Image(unsigned int width, unsigned int height);
+        ~Image();
 
         /* Alter each pixel to given color
          */
@@ -40,8 +42,10 @@ namespace ACCAD
 
     private:
 
-        Color **canvas;
+        Color *canvas;
         std::vector<IFigure*> figures;
         unsigned int width, height;
+
+        Color& at(unsigned int width, unsigned int height);
     };
 }
