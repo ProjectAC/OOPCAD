@@ -22,6 +22,6 @@ ACCAD::Stroke::Stroke(const std::vector<std::pair<Vec2i, Color>>& origin, const 
     transform(this->origin.begin(), this->origin.end(), this->target.begin(),
         [target](pair<Vec2i, Color> org)->pair<Vec2i, Color>
         {
-            return pair<Vec2i, Color>(org.first,target);
+            return pair<Vec2i, Color>(org.first, target);
         });
 }

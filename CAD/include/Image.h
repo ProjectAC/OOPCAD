@@ -13,6 +13,8 @@ namespace ACCAD
     class Image
     {
     public:
+        Image(unsigned int width, unsigned int height);
+        ~Image();
 
         /* Alter each pixel to given color
          */
@@ -39,9 +41,13 @@ namespace ACCAD
         void eraseFigure(IFigure *figure);
 
     private:
-
-        Color **canvas;
+        /* Left-up is 0, right-bottom is (width-1)*(height-1) and row first.
+           e.g. canvas[x, y] = canvas[y * width + x].
+        */
+        Color *canvas;
         std::vector<IFigure*> figures;
         unsigned int width, height;
+
+        Color& at(unsigned int width, unsigned int height);
     };
 }
