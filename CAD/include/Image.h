@@ -6,6 +6,7 @@
 #include "definitions.h"
 #include "Figure.h"
 #include "Polygon.h"
+#include "Ellipse.h"
 
 namespace ACCAD
 {
@@ -27,7 +28,11 @@ namespace ACCAD
 
         /* Alter an Anchor of a Polygon
          */
-        void alterFigure(Polygon *figure, int anchorId, const Vec2 &from, const Vec2 &to);
+        void alterFigure(Polygon *figure, int anchorId, const Vec2 &to);
+
+        /* Resize a figure
+         */
+        void resizeFigure(IFigure *figure, int anchorId, const Vec2 &to);
 
         /* Erase a figure
          */

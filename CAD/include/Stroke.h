@@ -6,7 +6,7 @@
 
 namespace ACCAD
 {
-    class Stroke : public Operation
+    class Stroke : public IOperation
     {
     public:
 
@@ -20,6 +20,10 @@ namespace ACCAD
 
         /* [Constructor]
          */
-        Stroke(const std::vector<pair<Vec2, Color> > &origin, const Color &target);
+        Stroke(const std::vector<std::pair<Vec2, Color> > &origin, const Color &target);
+
+    private:
+        std::vector<std::pair<Vec2, Color> > origin;
+        std::vector<std::pair<Vec2, Color> > target;
     };
 }
