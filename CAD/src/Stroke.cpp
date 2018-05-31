@@ -18,8 +18,10 @@ void ACCAD::Stroke::undo(Image & image)
 ACCAD::Stroke::Stroke(const std::vector<std::pair<Vec2i, Color>>& origin, const Color & target)
 {
     this->origin = origin;
-    for (auto item : origin)
-    {
-        this->target.push_back({ item.first, target });
-    }
+    this->target.resize(origin.size());
+    transform(this->origin.begin(), this->origin.end(), this->target.begin(),
+        [target](pair<Vec2i, Color> org)->pair<Vec2i, Color>
+        {
+            return pair<Vec2i, Color>(org.first,target);
+        });
 }
