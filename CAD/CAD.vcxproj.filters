@@ -54,9 +54,6 @@
     <ClInclude Include="include\Image.h">
       <Filter>头文件\include</Filter>
     </ClInclude>
-    <ClInclude Include="include\Loader.h">
-      <Filter>头文件\include</Filter>
-    </ClInclude>
     <ClInclude Include="include\Operation.h">
       <Filter>头文件\include</Filter>
     </ClInclude>
