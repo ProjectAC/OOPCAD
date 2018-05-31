@@ -150,6 +150,8 @@
     <ClCompile Include="..\CAD\src\definitions.cpp" />
     <ClCompile Include="..\CAD\src\Ellipse.cpp" />
     <ClCompile Include="..\CAD\src\Figure.cpp" />
+    <ClCompile Include="..\CAD\src\Image.cpp" />
+    <ClCompile Include="..\CAD\src\Polygon.cpp" />
     <ClCompile Include="..\CAD\src\Renderer.cpp" />
     <ClCompile Include="..\CAD\src\Stroke.cpp" />
     <ClCompile Include="..\CAD\src\Utility.cpp" />
