@@ -13,7 +13,7 @@ namespace ACCAD
     class Image
     {
     public:
-        Image(unsigned int width, unsigned int height);
+        Image(unsigned int width, unsigned int height, Color color = { 255,255,255,255 });
         ~Image();
 
         /* Alter each pixel to given color

@@ -6,9 +6,13 @@ using namespace std;
 
 namespace ACCAD
 {
-    Image::Image(unsigned int width, unsigned int height)
+    Image::Image(unsigned int width, unsigned int height, Color color)
     {
         canvas = new Color[width*height];
+        for (unsigned int i = 0; i < width*height; i++)
+        {
+            canvas[i] = color;
+        }
         this->width = width;
         this->height = height;
     }
