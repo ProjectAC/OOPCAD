@@ -40,6 +40,8 @@ namespace ACCAD
          */
         void eraseFigure(IFigure *figure);
 
+        friend void PrintImage(Image& image);
+
     private:
         /* Left-up is 0, right-bottom is (width-1)*(height-1) and row first.
            e.g. canvas[x, y] = canvas[y * width + x].
@@ -50,4 +52,6 @@ namespace ACCAD
 
         Color& at(unsigned int width, unsigned int height);
     };
+
+    void PrintImage(Image& image);
 }

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "../stdafx.h"
 
 #include "../include/Ellipse.h"
 #include "../include/Utility.h"

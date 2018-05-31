@@ -1,6 +1,9 @@
 #include "../stdafx.h"
 
 #include "../include/Image.h"
+#include <iostream>
+#include <iomanip>
+#include <string>
 #include <algorithm>
 using namespace std;
 
@@ -58,5 +61,18 @@ namespace ACCAD
     Color& Image::at(unsigned int x, unsigned int y)
     {
         return canvas[y*width + x];
+    }
+
+    void PrintImage(Image& image)
+    {
+        for (unsigned int i = 0; i < image.height; i++)
+        {
+            for (unsigned int j = 0; j < image.width; j++)
+            {
+                string out = "{" + to_string((int)image.at(j, i).a) + "," + to_string((int)image.at(j, i).b) + "," + to_string((int)image.at(j, i).g) + "," + to_string((int)image.at(j, i).r) + "}";
+                cout << setw(18) << setiosflags(ios::left) << out;
+            }
+            cout << endl;
+        }
     }
 }
