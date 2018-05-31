@@ -48,7 +48,7 @@ void mainloop()
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        ((ACCAD::Polygon*)t)->alter(0, Vec2(5, 2) + Vec2(0, sin(tmp) * 5));
+        ((ACCAD::Polygon*)t)->alter(0, Vec2(5, 2) + Vec2(0, sin(tmp) * 2));
         //t->resize(1, Vec2(5, 2) + Vec2(cos(tmp) * 2, cos(tmp) * 2));
         //t->resize(2, Vec2(5, 0) + Vec2(0, cos(tmp) * 2));
         s->resize(6, { 0, cos(tmp) * 1.5f });
