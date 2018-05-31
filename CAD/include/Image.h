@@ -41,7 +41,9 @@ namespace ACCAD
         void eraseFigure(IFigure *figure);
 
     private:
-
+        /* Left-up is 0, right-bottom is (width-1)*(height-1) and row first.
+           e.g. canvas[x, y] = canvas[y * width + x].
+        */
         Color *canvas;
         std::vector<IFigure*> figures;
         unsigned int width, height;
