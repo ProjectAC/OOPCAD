@@ -1,27 +1,31 @@
-#include "..\stdafx.h"
+#include "stdafx.h"
 
-#include "..\include\Stroke.h"
 #include <algorithm>
+#include "..\include\Stroke.h"
+
 using namespace std;
-using namespace ACCAD;
 
-void ACCAD::Stroke::exec(Image & image)
+namespace ACCAD
 {
-    image.alterPixels(target);
-}
 
-void ACCAD::Stroke::undo(Image & image)
-{
-    image.alterPixels(origin);
-}
+    void ACCAD::Stroke::exec(Image & image)
+    {
+        image.alterPixels(target);
+    }
 
-ACCAD::Stroke::Stroke(const std::vector<std::pair<Vec2, Color>>& origin, const Color & target)
-{
-    this->origin = origin;
-    this->target.resize(origin.size());
-    transform(this->target.begin(), this->target.end(), this->target.begin(), 
-        [target](pair<Vec2, Color> org)->pair<Vec2, Color>
+    void ACCAD::Stroke::undo(Image & image)
+    {
+        image.alterPixels(origin);
+    }
+
+    ACCAD::Stroke::Stroke(const std::vector<std::pair<Vec2i, Color> >& origin, const Color & target)
+    {
+        this->origin = origin;
+        this->target.resize(origin.size());
+        transform(this->target.begin(), this->target.end(), this->target.begin(),
+            [target](pair<Vec2i, Color> org) -> pair<Vec2i, Color>
         {
-            return pair<Vec2, Color>(org.first,target);
+            return pair<Vec2i, Color>(org.first, target);
         });
+    }
 }

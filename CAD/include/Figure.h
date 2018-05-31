@@ -59,7 +59,13 @@ namespace ACCAD
 
         void rotate(int id, const Vec2 &to);
 
+        /* Constructor with details
+         */
         IFigure(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner);
+
+        /* Default constructor
+         */
+        IFigure();
 
     protected:
 
