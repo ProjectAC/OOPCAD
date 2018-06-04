@@ -6,16 +6,32 @@ using namespace std;
 
 namespace ACCAD
 {
+    Image::Image(unsigned int width, unsigned int height, Color color)
+    {
+        canvas = new Color[width*height];
+        for (unsigned int i = 0; i < width*height; i++)
+        {
+            canvas[i] = color;
+        }
+        this->width = width;
+        this->height = height;
+    }
+
+    Image::~Image()
+    {
+        delete[]canvas;
+    }
+
     void Image::alterPixels(const std::vector<std::pair<Vec2i, Color> > &pixels)
     {
         for (auto &p : pixels)
-            canvas[p.first.x][p.first.y] = p.second;
+            this->at(p.first.x, p.first.y) = p.second;
     }
 
     void Image::alterPixels(const std::vector<Vec2i> &pixels, const Color &color)
     {
         for (auto &p : pixels)
-            canvas[p.x][p.y] = color;
+            this->at(p.x, p.y) = color;
     }
 
     void Image::insertFigure(IFigure *figure)
@@ -37,5 +53,10 @@ namespace ACCAD
     {
         auto iter = find(figures.begin(), figures.end(), figure);
         figures.erase(iter);
+    }
+
+    Color& Image::at(unsigned int x, unsigned int y)
+    {
+        return canvas[y*width + x];
     }
 }
