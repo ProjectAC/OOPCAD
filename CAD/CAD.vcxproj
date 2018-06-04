@@ -151,6 +151,7 @@
     <ClInclude Include="include\Image.h" />
     <ClInclude Include="include\Loader.h" />
     <ClInclude Include="include\Operation.h" />
+    <ClInclude Include="include\Brush.h" />
     <ClInclude Include="include\Polygon.h" />
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Stroke.h" />

@@ -15,11 +15,31 @@ namespace ACCAD
     public:
         /* Alter each pixel to given color
          */
-        void alterPixels(const std::vector<std::pair<Vec2, Color> > &pixels);
+        //void alterPixels(const std::vector<std::pair<Vec2, Color> > &pixels);
 
         /* Alter all pixels to the same color
          */
-        void alterPixels(const std::vector<Vec2> &pixels, const Color &color);
+        //void alterPixels(const std::vector<Vec2> &pixels, const Color &color);
+
+        /* Start drawing. Save all drawing infomation. 
+         */
+        void startDraw();
+
+        /* Finish drawing. Construct a Stroke instance and push it into Operation stack. 
+         */
+        void finishDraw();
+
+        /* Set a start-point.
+         */
+        void setStartPoint(const Vec2i& from);
+
+        /* Draw from start-point to end-point and set the next start-point as current end-point.
+         */
+        void movePen(const Vec2i& to);
+        
+        /* Set current pen.
+         */
+        void setPen(const Pen& pen);
 
         /* Insert a figure
          */
@@ -38,6 +58,10 @@ namespace ACCAD
         Image image;
         Renderer renderer;
         Loader loader;
+
+        Pen pen;
+        Vec2i startPoint;
+
 
         /* This is my self-designed Stack,
          * Not STL!!!
