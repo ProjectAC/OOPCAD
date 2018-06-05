@@ -68,5 +68,10 @@ namespace ACCAD
         this->x = x;
         this->y = y;
     }
+
+    bool Vec2i::operator==(const Vec2i & p) const
+    {
+        return x == p.x&&y == p.y;
+    }
 }
 

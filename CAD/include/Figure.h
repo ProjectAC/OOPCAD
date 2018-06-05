@@ -61,6 +61,8 @@ namespace ACCAD
 
         IFigure(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner);
 
+        virtual IFigure* Clone() = 0;
+
     protected:
 
         float theta;

@@ -9,6 +9,8 @@
 #include "Loader.h"
 #include "Operation.h"
 #include "Brush.h"
+#include "Alternation.h"
+#include "Stroke.h"
 
 namespace ACCAD
 {
@@ -67,9 +69,13 @@ namespace ACCAD
          */
         void eraseSelectedFigure();
 
-        /* Select a figure
+        /* Judge whether clicking the given pixel can select a figure.
+         * If not, return -1, else return the index of the figure in image.
          */
         int SelectFigure(const Vec2i& point);
+        /* Set the index which refer to the selected figure
+         */
+        void setSelectedIndex(int index);
 
     private:
         /* Resize an Anchor of a figure
@@ -90,11 +96,14 @@ namespace ACCAD
         Renderer renderer;
         Loader loader;
         
-        int selectedFigure;
+        int selectedIndex;
         Pen pen;
         std::vector<Vec2i> tempVertexes;
         std::unordered_set<Vec2i> tempPixels;
 
+        Alternation* alter;
+        Stroke* stroke;
+        
         /* This is my self-designed Stack,
          * Not STL!!!
          */

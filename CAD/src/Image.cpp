@@ -65,6 +65,17 @@ namespace ACCAD
         return this->height;
     }
 
+    void Image::overwriteFigure(int index, IFigure * target)
+    {
+        delete figures[index];
+        figures[index] = target->Clone();
+    }
+
+    IFigure* Image::getFigure(int index)
+    {
+        return figures[index];
+    }
+
     Color& Image::at(unsigned int x, unsigned int y)
     {
         return canvas[y*width + x];

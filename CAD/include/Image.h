@@ -43,6 +43,8 @@ namespace ACCAD
         unsigned int getWidth() const;
         unsigned int getHeight() const;
 
+        void overwriteFigure(int index, IFigure* target);
+        IFigure* getFigure(int index);
     private:
         /* Right-up is 0, left-bottom is (width-1)*(height-1) and row first.
            e.g. canvas[x, y] = canvas[y * width + x].
