@@ -1,12 +1,14 @@
 #pragma once
 
 #include <vector>
+#include <unordered_set>
 #include "Vec2.h"
 #include "definitions.h"
 #include "Figure.h"
 #include "Image.h"
 #include "Loader.h"
 #include "Operation.h"
+#include "Brush.h"
 
 namespace ACCAD
 {
@@ -19,15 +21,13 @@ namespace ACCAD
         /* Finish drawing. Construct a Stroke instance and push it into Operation stack. 
          */
         void finishDraw();
-        /* Set a start-point.
-         */
-        void setStartPoint(const Vec2i& from);
         /* Draw from start-point to end-point and set the next start-point as current end-point.
          */
-        void movePen(const Vec2i& to);    
-        /* Set current pen.
+        void movePen(const Vec2i& from, const Vec2i& to);
+        /* Current pen.
          */
         void setPen(const Pen*& pen);
+        Pen getPen();
 
         /* Insert an ellipse. Set selectedFigure as this figure and enter alternation mode.
          * finishAlter should be called after calling this function.
@@ -42,45 +42,58 @@ namespace ACCAD
          */
         void startPolygon();
         /* Finish drawing a polygon.
-        */
+         */
         void finishPolygon();
         /* Add vertex to the drawing polygon.
-        */
+         */
         void addVertex(const Vec2i& vertex);
 
-        /* Start altering a figure. In the alternation mode, you can do resize, alter vertex (only for polygon) and rotate for figure.
+        enum AlterMode
+        {
+            Vertex,
+            Border,
+        };
+        /* Start altering a figure.
          */
-        void startAlter();
-        /* Finish resizing a figure.
-        */
+        void startAlter(AlterMode alterMode);
+        /* Finish altering a figure.
+         */
         void finishAlter();
-        /* Resize an Anchor of a figure
+        /* Alter the selected figure
          */
-        void resizeFigure(IFigure *figure, int anchorId, const Vec2 &to);
-        /* Alter an Anchor of a figure
-        */
-        void alterFigure(Polygon *figure, int anchorId, const Vec2 &to);
-        /* Rotate an Anchor of a figure
-        */
-        void rotateFigure(IFigure *figure, int anchorId, const Vec2 &to);
-
-        /* Erase a figure
-         */
-        void eraseFigure(IFigure *figure);
+        void AlterFigure(const Vec2i& from, const Vec2i& to);
 
         /* Erase the selected figure
          */
         void eraseSelectedFigure();
 
+        /* Select a figure
+         */
+        int SelectFigure(const Vec2i& point);
+
     private:
-        
+        /* Resize an Anchor of a figure
+         */
+        void resizeFigure(int figure, int anchorId, const Vec2 &to);
+        /* Alter an Anchor of a figure
+         */
+        void alterFigure(int figure, int anchorId, const Vec2 &to);
+        /* Rotate an Anchor of a figure
+         */
+        void rotateFigure(int figure, int anchorId, const Vec2 &to);
+
+        /* Erase a figure
+         */
+        void eraseFigure(int figure);
+
         Image image;
         Renderer renderer;
         Loader loader;
-
+        
+        int selectedFigure;
         Pen pen;
-        Vec2i startPoint;
-        IFigure* selectedFigure;
+        std::vector<Vec2i> tempVertexes;
+        std::unordered_set<Vec2i> tempPixels;
 
         /* This is my self-designed Stack,
          * Not STL!!!

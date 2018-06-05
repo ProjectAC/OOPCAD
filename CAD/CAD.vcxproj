@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="CAD.cpp" />
     <ClCompile Include="src\definitions.cpp" />
+    <ClCompile Include="src\Editor.cpp" />
     <ClCompile Include="src\Ellipse.cpp" />
     <ClCompile Include="src\Figure.cpp" />
     <ClCompile Include="src\Image.cpp" />

@@ -55,6 +55,16 @@ namespace ACCAD
         figures.erase(iter);
     }
 
+    unsigned int Image::getWidth() const
+    {
+        return this->width;
+    }
+
+    unsigned int Image::getHeight() const
+    {
+        return this->height;
+    }
+
     Color& Image::at(unsigned int x, unsigned int y)
     {
         return canvas[y*width + x];
