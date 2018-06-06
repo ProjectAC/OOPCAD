@@ -28,7 +28,7 @@ namespace ACCAD
         void movePen(const Vec2i& from, const Vec2i& to);
         /* Current pen.
          */
-        void setPen(const Pen*& pen);
+        void setPen(const Pen& pen);
         Pen getPen();
 
         /* Insert an ellipse. Set selectedFigure as this figure and enter alternation mode.
@@ -99,7 +99,8 @@ namespace ACCAD
         int selectedIndex;
         Pen pen;
         std::vector<Vec2i> tempVertexes;
-        std::unordered_set<Vec2i> tempPixels;
+        std::vector<Vec2i> tempPixels;
+        std::unordered_set<Vec2i> globalHashtable;
 
         Alternation* alter;
         Stroke* stroke;

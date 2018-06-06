@@ -9,6 +9,7 @@ namespace ACCAD
         float x, y;
 
         Vec2(float x = 0.0f, float y = 0.0f);
+        Vec2(Vec2i v2i);
         Vec2 operator+(const Vec2 &b) const;
         Vec2 operator-(const Vec2 &b) const;
         Vec2 operator*(float k) const;
@@ -25,8 +26,12 @@ namespace ACCAD
         int x, y;
         Vec2i(int x = 0, int y = 0);
         bool operator==(const Vec2i& p) const ;
+        Vec2i operator+(const Vec2i& b) const;
+        Vec2i operator-(const Vec2i& b) const;
+        int sqrLength() const;
+        float length() const;
     };
-
+    int dot(const Vec2i &a, const Vec2i &b);
 }
 
 namespace std
