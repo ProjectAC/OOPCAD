@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include <unordered_set>
 #include "Vec2.h"
 #include "definitions.h"
 #include "Figure.h"
@@ -10,7 +9,7 @@
 #include "Operation.h"
 #include "Brush.h"
 #include "Alternation.h"
-#include "Stroke.h"
+#include "StrokeManager.h"
 
 namespace ACCAD
 {
@@ -99,11 +98,8 @@ namespace ACCAD
         int selectedIndex;
         Pen pen;
         std::vector<Vec2i> tempVertexes;
-        std::vector<Vec2i> tempPixels;
-        std::unordered_set<Vec2i> globalHashtable;
-
-        Alternation* alter;
-        Stroke* stroke;
+        
+        StrokeManager strokeManager;
         
         /* This is my self-designed Stack,
          * Not STL!!!

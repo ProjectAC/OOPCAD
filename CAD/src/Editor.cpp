@@ -22,24 +22,17 @@ float DistanceToLine(const Vec2i& P, const Vec2i& A, const Vec2i& B)
 
 void ACCAD::Editor::startDraw()
 {
-    globalHashtable.clear();
-    tempPixels.clear();
+    strokeManager.startDraw();
 }
 
 void ACCAD::Editor::finishDraw()
 {
-    if (tempPixels.size() == 0)return;
-
-    vector<pair<Vec2i, Color> > origin;
-    origin.resize(tempPixels.size());
-    for (auto pixel : tempPixels)
+    Stroke* stroke = strokeManager.finishDraw();
+    if (stroke != nullptr)
     {
-        origin.push_back({ pixel,image.at(pixel.x,pixel.y) });
+        //TODO:
+        stack.pushback(stroke);
     }
-    Stroke* stroke = new Stroke(origin, this->pen.color);
-    stroke->exec(image);
-    //TODO: stack
-    stack.pushback(stroke);
 }
 
 void ACCAD::Editor::movePen(const Vec2i & from, const Vec2i & to)
@@ -57,21 +50,16 @@ void ACCAD::Editor::movePen(const Vec2i & from, const Vec2i & to)
         for (auto d : delta)
         {
             Vec2i point(center.x + d[0], center.y + d[1]);
-            //在边界内，这一次移动未搜索过，距离小于画笔宽度
-            if (IsInside(point, image) && hashtable.find(point) == hashtable.end() && pen.width / 2 >= DistanceToLine(point, from, to) )
+            //在边界内&&像素未搜索过&&距离小于画笔宽度
+            if (image.isInside(point) && hashtable.find(point) == hashtable.end() && DistanceToLine(point, from, to) <= pen.width / 2)
             {
                 queue.push(point);
                 hashtable.insert(point);
-                //新覆盖的点
-                if (globalHashtable.find(point) == globalHashtable.end())
-                {
-                    globalHashtable.insert(point);
-                    tempPixels.push_back(point);
-                }
+                strokeManager.addPixel(point, image.at(point), pen.color, image);
             }
         }
     }
-    //TODO：渲染？
+    //TODO：画面刷新一次？
 }
 
 void ACCAD::Editor::setPen(const Pen & pen)
@@ -102,6 +90,7 @@ void ACCAD::Editor::finishAlter()
 void ACCAD::Editor::AlterFigure(const Vec2i & from, const Vec2i & to)
 {
     //根据像素坐标判断作何种修改，然后调用image的接口修改figure
+    //渲染？
 }
 
 int ACCAD::Editor::SelectFigure(const Vec2i & point)

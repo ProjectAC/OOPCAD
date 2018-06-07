@@ -1,6 +1,6 @@
-#include "..\stdafx.h"
+#include "../stdafx.h"
 
-#include "..\include\Stroke.h"
+#include "../include/Stroke.h"
 #include <algorithm>
 using namespace std;
 using namespace ACCAD;
@@ -15,23 +15,18 @@ void ACCAD::Stroke::undo(Image & image)
     image.alterPixels(origin);
 }
 
-inline char BlendChannel(char origin, char target, char alpha)
-{
-    return ((255 - alpha)*origin + alpha * target) >> 8;
-}
-
-inline Color Blend(const Color& origin, const Color& target)
-{
-    return Color(BlendChannel(origin.r, target.r, target.a), BlendChannel(origin.g, target.g, target.a), BlendChannel(origin.b, target.b, target.a), origin.a);
-}
-
-ACCAD::Stroke::Stroke(const std::vector<std::pair<Vec2i, Color>>& origin, const Color & target)
+ACCAD::Stroke::Stroke(const std::vector<std::pair<Vec2i, Color>>& origin, const std::vector<std::pair<Vec2i, Color>>& target)
 {
     this->origin = origin;
-    this->target.resize(origin.size());
-    transform(this->origin.begin(), this->origin.end(), this->target.begin(),
-        [target](pair<Vec2i, Color> org)->pair<Vec2i, Color>
-        {
-            return pair<Vec2i, Color>(org.first, Blend(org.second, target));
-        });
+    this->target = target;
+}
+
+ACCAD::Stroke::Stroke()
+{
+}
+
+void ACCAD::Stroke::addPixel(const std::pair<Vec2i, Color>& origin, const std::pair<Vec2i, Color>& target)
+{
+    this->origin.push_back(origin);
+    this->target.push_back(target);
 }

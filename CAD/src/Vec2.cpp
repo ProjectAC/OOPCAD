@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "../stdafx.h"
 
 #include "../include/Vec2.h"
 
@@ -71,7 +71,7 @@ namespace ACCAD
 
     int dot(const Vec2i & a, const Vec2i & b)
     {
-        a.x*b.x + a.y*b.y;
+        return a.x*b.x + a.y*b.y;
     }
 
     Vec2i::Vec2i(int x, int y)

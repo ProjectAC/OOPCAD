@@ -16,6 +16,10 @@ namespace ACCAD
         Image(unsigned int width, unsigned int height, Color color = { 255,255,255,255 });
         ~Image();
 
+        /* Alter a pixels to given color
+        */
+        void alterPixel(const Vec2i &pixel, const Color &color);
+
         /* Alter each pixel to given color
          */
         void alterPixels(const std::vector<std::pair<Vec2i, Color> > &pixels);
@@ -40,7 +44,10 @@ namespace ACCAD
          */
         void eraseFigure(IFigure *figure);
 
-        Color& at(unsigned int width, unsigned int height);
+        Color& at(unsigned int x, unsigned int y);
+        Color& at(const Vec2i& v2i);
+        bool isInside(unsigned int x, unsigned int y) const;
+        bool isInside(const Vec2i& v2i) const;
 
         unsigned int getWidth() const;
         unsigned int getHeight() const;

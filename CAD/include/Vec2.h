@@ -4,6 +4,8 @@
 
 namespace ACCAD
 {
+    struct Vec2i;
+
     struct Vec2
     {
         float x, y;
