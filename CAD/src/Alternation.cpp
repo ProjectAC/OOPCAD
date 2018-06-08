@@ -13,13 +13,13 @@ void ACCAD::Alternation::undo(Image & image)
 ACCAD::Alternation::Alternation(IFigure * origin, int index)
 {
     this->target = nullptr;
-    this->origin = origin->Clone();//TODO:多态，深拷贝
+    this->origin = origin->Clone();
     this->index = index;
 }
 
 void ACCAD::Alternation::AddTarget(IFigure * target)
 {
-    this->target = target->Clone();//TODO:同上
+    this->target = target->Clone();
 }
 
 ACCAD::Alternation::~Alternation()

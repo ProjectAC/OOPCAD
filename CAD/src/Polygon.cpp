@@ -104,6 +104,11 @@ namespace ACCAD
         return POLYGON;
     }
 
+    Polygon * Polygon::Clone()
+    {
+        return new Polygon(*this);
+    }
+
     void Polygon::reGen()
     {
         top = bottom = vertices[0].y;

@@ -51,6 +51,10 @@ namespace ACCAD
          */
         FigureType getType() override;
 
+        /* Deep copy a ellipse;
+        */
+        Polygon* Clone() override;
+
         /* [Constructor]
          * Construct a polygon with a list of Vertices
          */

@@ -44,6 +44,10 @@ namespace ACCAD
         */
         FigureType getType() override;
 
+        /* Deep copy a ellipse;
+        */
+        Ellipse* Clone() override;
+
         /* [Constructor]
          * Construct an ellipse with a, b, and theta
          */

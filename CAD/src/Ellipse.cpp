@@ -72,6 +72,11 @@ namespace ACCAD
         return ELLIPSE;
     }
 
+    Ellipse * Ellipse::Clone()
+    {
+        return new Ellipse(*this);
+    }
+
     Ellipse::Ellipse(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner, float a, float b) :
         IFigure(pos, theta, cborder, cinner),
         a(a),
