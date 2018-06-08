@@ -71,7 +71,7 @@ Pen ACCAD::Editor::getPen()
     return this->pen;
 }
 
-void ACCAD::Editor::startAlter(MouseButton mouse)
+void ACCAD::Editor::startAlter(MouseKeys mouse)
 {
     AlterManager::AlterMode alterMode;
     switch (mouse)
@@ -101,26 +101,82 @@ void ACCAD::Editor::finishAlter()
 void ACCAD::Editor::AlterFigure(const Vec2i & from, const Vec2i & to)
 {
     alterManager.AlterFigure(from, to);
+    //TODO：画面刷新
 }
 
-void ACCAD::Editor::setAlterMode(const Vec2i & point, MouseButton mouse)
+void ACCAD::Editor::setAlterMode(const Vec2i & point, MouseKeys mouse)
 {
     //操作方式：
     //左键：
     //  8个锚点为圆心的8个圆：缩放
     //  4个角外部的扇形区域：旋转
-    //  图形内部：移动
+    //  图形中心为圆心的圆：移动
     //右键：
     //  多边形指定顶点移动
+    IFigure * figure = image.getFigure(selectedIndex);
+    AlterManager::AlterMode alterMode = AlterManager::None;
+    int anchorID = -1;
     switch (mouse)
     {
-    case MouseButton::Left:
-        break;
-    case MouseButton::Right:
-        break;
-    default:
-        break;
+        case MouseKeys::Left:
+        {
+            auto anchors = figure->getBorder();
+            for (int i = 0; i < anchors.size(); i++)
+            {
+                if ((anchors[i] - point).length() < anchorThreshold)
+                {
+                    alterMode = AlterManager::Resize;
+                    anchorID = i;
+                    goto OutsideSwitch;
+                }
+            }
+
+            auto center = (anchors[0] + anchors[4])*0.5f;
+            float a = abs((anchors[0] - center).x);
+            float b = abs((anchors[2] - center).y);
+            auto r = Vec2(point) - center;
+            for (int i = 1; i < anchors.size(); i+=2)
+            {
+                if ((anchors[i] - point).length() < resizeThreshold && 
+                    abs(r.x)>a &&
+                    abs(r.y)>b)
+                {
+                    alterMode = AlterManager::Rotate;
+                    anchorID = i;
+                    goto OutsideSwitch;
+                }
+            }
+
+            if (figure->isInsize(point))
+            {
+                alterMode = AlterManager::Move;
+                goto OutsideSwitch;
+            }
+            alterManager.setAlterMode(AlterManager::None, -1);
+            break;
+        }
+        case MouseKeys::Right:
+        {
+            if (figure->getType() == FigureType::POLYGON)
+            {
+                auto anchors = static_cast<Polygon*>(figure)->getAnchors();
+                for (int i = 0; i < anchors.size(); i++)
+                {
+                    if ((anchors[i] - point).length() < anchorThreshold)
+                    {
+                        alterMode = AlterManager::Vertex;
+                        anchorID = i;
+                        goto OutsideSwitch;
+                    }
+                }
+            }
+            break;
+        }
+        default:
+            break;
     }
+OutsideSwitch:
+    alterManager.setAlterMode(alterMode,anchorID);
 }
 
 int ACCAD::Editor::SelectFigure(const Vec2i & point)

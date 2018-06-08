@@ -52,14 +52,14 @@ namespace ACCAD
         void addVertex(const Vec2i& vertex);
 
 #pragma region Alter
-        enum MouseButton
+        enum MouseKeys
         {
             Left,
             Right
         };
         /* Start altering the selected figure.
          */
-        void startAlter(MouseButton mouse);
+        void startAlter(MouseKeys mouse);
         /* Finish altering the selected figure.
          */
         void finishAlter();
@@ -69,7 +69,7 @@ namespace ACCAD
 
         /* Set AlterMode according to mouse input.
         */
-        void setAlterMode(const Vec2i& point, MouseButton mouse);
+        void setAlterMode(const Vec2i& point, MouseKeys mouse);
 #pragma endregion
 
         /* Erase the selected figure
@@ -94,7 +94,9 @@ namespace ACCAD
         Pen pen;
         StrokeManager strokeManager;
         AlterManager alterManager;
-        
+
+        const float anchorThreshold = 5.0f;
+        const float resizeThreshold = 20.0f;
         /* This is my self-designed Stack,
          * Not STL!!!
          */

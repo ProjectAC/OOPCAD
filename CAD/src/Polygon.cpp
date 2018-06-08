@@ -81,6 +81,24 @@ namespace ACCAD
         updated = true;
     }
 
+    bool Polygon::isInsize(const Vec2 & point)
+    {
+        int   i, j = vertices.size() - 1;
+        bool  oddNodes = false;
+        float x = point.x, y = point.y;
+        for (i = 0; i<vertices.size(); i++) 
+        {
+            if ((vertices[i].y< y && vertices[j].y >= y
+                || vertices[j].y<y && vertices[i].y >= y)
+                && (vertices[i].x <= x || vertices[j].x <= x)) 
+            {
+                oddNodes ^= (vertices[i].x + (y - vertices[i].y) / (vertices[j].y - vertices[i].y)*(vertices[j].x - vertices[i].x) < x);
+            }
+            j = i;
+        }
+        return oddNodes;
+    }
+
     FigureType Polygon::getType()
     {
         return POLYGON;

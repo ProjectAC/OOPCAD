@@ -55,7 +55,7 @@ void ACCAD::AlterManager::AlterFigure(const Vec2i & from, const Vec2i & to)
     default:
         break;
     }
-    if ((to - from).sqrLength != 0)
+    if (alterMode!=None && (to - from).sqrLength != 0)
     {
         isDirty = true;
     }

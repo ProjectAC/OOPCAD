@@ -30,6 +30,7 @@ namespace ACCAD
         void setAlterMode(AlterMode alterMode, int anchorID);
 
         /* Alter the figure according to alter mode and anchor selected.
+        * If alterMode is None, then no alternation will be done.
         */
         void AlterFigure(const Vec2i& from, const Vec2i& to);
 
@@ -44,7 +45,5 @@ namespace ACCAD
         int index;
         AlterMode alterMode;
         int anchorID;
-
-        const float anchorThreshold = 5.0f;
     };
 }
