@@ -15,9 +15,13 @@ namespace ACCAD
         Vec2 operator+(const Vec2 &b) const;
         Vec2 operator-(const Vec2 &b) const;
         Vec2 operator*(float k) const;
+        Vec2 operator/(float k) const;
+        float operator*(const Vec2 &b) const;
         float sqrLength() const;
         float length() const;
+        Vec2 abs();
         Vec2 rotate(const Vec2 &center, float theta);
+        Vec2 normalize();
     };
     std::istream& operator>>(std::istream& in, Vec2& vec2);
     std::ostream& operator<<(std::ostream& out, const Vec2& vec2);

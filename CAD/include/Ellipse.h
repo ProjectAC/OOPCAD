@@ -53,6 +53,10 @@ namespace ACCAD
          */
         Ellipse::Ellipse(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner, float a, float b);
 
+        /* Default constructor
+         */
+        Ellipse::Ellipse();
+
     private:
 
         float a;

@@ -63,9 +63,16 @@ namespace ACCAD
 
         virtual bool isInside(const Vec2& point) = 0;
 
+        virtual IFigure* Clone() = 0;
+
+        /* Constructor with details
+         */
         IFigure(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner);
 
-        virtual IFigure* Clone() = 0;
+
+        /* Default constructor
+         */
+        IFigure();
 
     protected:
 

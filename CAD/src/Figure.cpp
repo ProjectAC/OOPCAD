@@ -28,9 +28,12 @@ namespace ACCAD
         theta(theta),
         borderColor(cborder),
         innerColor(cinner),
-        updated(false)
+        updated(true)
     {
 
     }
 
+    IFigure::IFigure()
+    {
+    }
 }

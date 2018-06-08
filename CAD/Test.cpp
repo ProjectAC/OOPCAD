@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "CAD.h"
+#include "Test.h"
 #include "include/Renderer.h"
 #include "include/Ellipse.h"
 #include "include/Polygon.h"
@@ -21,6 +21,8 @@ WCHAR szTitle[MAX_LOADSTRING];                  // 标题栏文本
 WCHAR szWindowClass[MAX_LOADSTRING];            // 主窗口类名
 
 ACCAD::IFigure *t;
+ACCAD::IFigure *s;
+
 Renderer renderer;
 
 // 此代码模块中包含的函数的前向声明: 
@@ -35,7 +37,7 @@ void mainloop()
 
     renderer.init(renderer.hWnd);
 
-    gluOrtho2D(-2, 2, -2, 2);
+    gluOrtho2D(-10, 10, -5, 5);
 
     float tmp = 0;
 
@@ -46,8 +48,13 @@ void mainloop()
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        ((ACCAD::Polygon*)t)->alter(0, { sin(tmp), sin(tmp) });
+        ((ACCAD::Polygon*)t)->alter(0, Vec2(5, 2) + Vec2(0, sin(tmp) * 2));
+        //t->resize(1, Vec2(5, 2) + Vec2(cos(tmp) * 2, cos(tmp) * 2));
+        //t->resize(2, Vec2(5, 0) + Vec2(0, cos(tmp) * 2));
+        s->resize(6, { 0, cos(tmp) * 1.5f });
+
         t->render(renderer);
+        s->render(renderer);
         
         glFlush();
 
@@ -75,12 +82,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MyRegisterClass(hInstance);
 
     std::vector<Vec2> verts;
-    verts.push_back({ 1, 1 });
-    verts.push_back({ -1, 1 });
-    verts.push_back({ -1,-1 });
-    verts.push_back({ 1,-1 });
-    ACCAD::Polygon p({ 0, 0 }, 0, { 0, 0, 0, 255 }, { 0, 255, 255, 255 }, verts);
-    t = &p;
+    Vec2 tmp = { 5, 0 };
+    for (int i = 0, n = 7; i < n; i++)
+        verts.push_back(tmp + Vec2(sin(PI * 2 / n * i) * 2, cos(PI * 2 / n * i) * 2));
+
+    t = new ACCAD::Polygon({ 0, 0, 0, 255 }, { 0, 255, 255, 255 }, verts);
+    s = new ACCAD::Ellipse({-5, 0}, 0.5f, { 0, 0, 0, 255 }, { 255, 0, 0, 255 }, 2, 1);
 
     // 执行应用程序初始化: 
     if (!InitInstance (hInstance, nCmdShow, renderer))
@@ -149,7 +156,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow, Renderer &renderer)
    hInst = hInstance; // 将实例句柄存储在全局变量中
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      256, 256, 640, 490, nullptr, nullptr, hInstance, nullptr);
+      256, 256, 1000, 500, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {

@@ -33,7 +33,13 @@ namespace ACCAD
         wglMakeCurrent(hDC, hRC);
     }
 
-    void Renderer::render(const Vec2 &center, float theta, const Color &cborder, const Color &cinner, const std::vector<Vec2> &vertices)
+    void Renderer::flush()
+    {
+        glFlush();
+        SwapBuffers(hDC);
+    }
+
+    void Renderer::render(const Vec2 &center, float theta, const Color &cborder, const Color &cinner, const std::vector<Vec2> &vertices, bool show)
     {
         glPushMatrix();
 
@@ -54,6 +60,20 @@ namespace ACCAD
         for (auto &v : vertices)
             glVertex2f(v.x, v.y);
         glEnd();
+
+        if (show)
+        {
+            glColor4ub(255, 0, 0, 255);
+            for (auto &v : vertices)
+            {
+                glBegin(GL_POLYGON);
+                glVertex2f(v.x + 0.1, v.y);
+                glVertex2f(v.x, v.y + 0.1);
+                glVertex2f(v.x - 0.1, v.y);
+                glVertex2f(v.x, v.y - 0.1);
+                glEnd();
+            }
+        }
 
         glPopMatrix();
     }

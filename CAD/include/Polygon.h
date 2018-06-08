@@ -58,7 +58,14 @@ namespace ACCAD
         /* [Constructor]
          * Construct a polygon with a list of Vertices
          */
-        Polygon(const Vec2 &pos, float theta, const Color &cborder, const Color &cinner, const std::vector<Vec2> &verts);
+        Polygon(const Color &cborder, const Color &cinner, const std::vector<Vec2> &verts);
+
+        /* [Constructor]
+         * Construct a polygon
+         */
+        Polygon();
+
+        static Vec2 getPos(const std::vector<Vec2> &verts);
 
     private:
 

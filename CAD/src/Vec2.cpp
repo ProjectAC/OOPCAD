@@ -1,5 +1,6 @@
 #include "../stdafx.h"
 
+#include <cstdlib>
 #include "../include/Vec2.h"
 
 using namespace std;
@@ -48,6 +49,16 @@ namespace ACCAD
         return { x * k, y * k };
     }
 
+    Vec2 Vec2::operator/(float k) const
+    {
+        return { x / k, y / k };
+    }
+
+    float Vec2::operator*(const Vec2 &b) const
+    {
+        return x * b.x + y * b.y;
+    }
+
     float Vec2::sqrLength() const
     {
         return x * x + y * y;
@@ -67,6 +78,17 @@ namespace ACCAD
     float ACCAD::eucDist(const Vec2 &a, const Vec2 &b)
     {
         return (a - b).length();
+    }
+
+    Vec2 Vec2::normalize()
+    {
+        float len = length();
+        return { x / len, y / len };
+    }
+
+    Vec2 Vec2::abs()
+    {
+        return { fabs(x), fabs(y) };
     }
 
     int dot(const Vec2i & a, const Vec2i & b)
