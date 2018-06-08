@@ -10,6 +10,7 @@
 #include "Brush.h"
 #include "AlterManager.h"
 #include "StrokeManager.h"
+#include "Erasion.h"
 
 namespace ACCAD
 {
@@ -32,14 +33,10 @@ namespace ACCAD
         Pen getPen();
 #pragma endregion
 
-        /* Insert an ellipse. Set selectedFigure as this figure and enter alternation mode.
-         * finishAlter should be called after calling this function.
+#pragma region Insertion
+        /* Insert a Figure. Set selectedFigure as this figure and enter alternation mode.
          */
-        void insertEllipse(const Vec2i& center);
-        /* Insert an rectangle and set selectedFigure as this figure and enter alternation mode.
-         * finishAlter should be called after calling this function.
-         */
-        void insertRectangle(const Vec2i& center);
+        void insertFigure(FigureType figureType, const Vec2i& center);
 
         /* Start drawing a polygon.
          */
@@ -50,6 +47,7 @@ namespace ACCAD
         /* Add vertex to the drawing polygon.
          */
         void addVertex(const Vec2i& vertex);
+#pragma endregion
 
 #pragma region Alter
         enum MouseKeys
@@ -65,16 +63,18 @@ namespace ACCAD
         void finishAlter();
         /* Alter the selected figure
          */
-        void AlterFigure(const Vec2i& from, const Vec2i& to);
+        void alterFigure(const Vec2i& from, const Vec2i& to);
 
         /* Set AlterMode according to mouse input.
         */
         void setAlterMode(const Vec2i& point, MouseKeys mouse);
 #pragma endregion
 
+#pragma region Erasion
         /* Erase the selected figure
          */
         void eraseSelectedFigure();
+#pragma endregion
 
         /* Judge whether clicking the given pixel can select a figure.
          * If not, return -1, else return the index of the figure in image.
@@ -82,10 +82,6 @@ namespace ACCAD
         int SelectFigure(const Vec2i& point);
 
     private:
-        /* Erase a figure
-        */
-        void eraseFigure(IFigure* figure);
-
         Image image;
         Renderer renderer;
         Loader loader;

@@ -71,6 +71,13 @@ Pen ACCAD::Editor::getPen()
     return this->pen;
 }
 
+Figure* 
+
+void ACCAD::Editor::insertFigure(FigureType figureType, const Vec2i & center)
+{
+    
+}
+
 void ACCAD::Editor::startAlter(MouseKeys mouse)
 {
     AlterManager::AlterMode alterMode;
@@ -98,7 +105,7 @@ void ACCAD::Editor::finishAlter()
     }
 }
 
-void ACCAD::Editor::AlterFigure(const Vec2i & from, const Vec2i & to)
+void ACCAD::Editor::alterFigure(const Vec2i & from, const Vec2i & to)
 {
     alterManager.AlterFigure(from, to);
     //TODO：画面刷新
@@ -179,8 +186,12 @@ OutsideSwitch:
     alterManager.setAlterMode(alterMode,anchorID);
 }
 
-int ACCAD::Editor::SelectFigure(const Vec2i & point)
+void ACCAD::Editor::eraseSelectedFigure()
 {
-    //根据像素坐标选择图形
-    return 0;
+    if (selectedIndex != -1)
+    {
+        Erasion * erasion = new Erasion(image.getFigure(selectedIndex), selectedIndex);
+        erasion->exec(image);
+        stack.pushback(erasion);
+    }
 }

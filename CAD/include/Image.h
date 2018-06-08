@@ -31,6 +31,7 @@ namespace ACCAD
         /* Insert a figure. Return the index of the figure in vector.
          */
         int insertFigure(IFigure *figure);
+        int insertFigure(int index, IFigure *figure);
 
         /* Alter an Anchor of a Polygon
          */

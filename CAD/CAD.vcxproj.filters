@@ -87,6 +87,12 @@
     <ClInclude Include="include\AlterManager.h">
       <Filter>头文件\include</Filter>
     </ClInclude>
+    <ClInclude Include="include\Erasion.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Insertion.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -132,6 +138,12 @@
       <Filter>源文件\src</Filter>
     </ClCompile>
     <ClCompile Include="src\AlterManager.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Erasion.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Insertion.cpp">
       <Filter>源文件\src</Filter>
     </ClCompile>
   </ItemGroup>

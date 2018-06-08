@@ -62,7 +62,7 @@ namespace ACCAD
         updated = true;
     }
 
-    bool Ellipse::isInsize(const Vec2 & point)
+    bool Ellipse::isInside(const Vec2 & point)
     {
         return pow((point.x - center.x) / a, 2) + pow((point.y - center.y) / b, 2) < 1;
     }

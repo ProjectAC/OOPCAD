@@ -22,6 +22,10 @@ namespace ACCAD
     Image::~Image()
     {
         delete[]canvas;
+        for (auto ptr : figures)
+        {
+            delete ptr;
+        }
     }
 
     void Image::alterPixel(const Vec2i & pixel, const Color & color)
@@ -43,8 +47,14 @@ namespace ACCAD
 
     int Image::insertFigure(IFigure *figure)
     {    
-        figures.push_back(figure);
+        figures.push_back(figure->Clone());
         return figures.size() - 1;
+    }
+
+    int Image::insertFigure(int index, IFigure * figure)
+    {
+        figures.insert(figures.begin() + index, figure->Clone());
+        return index;
     }
 
     void Image::alterFigure(int index, int anchorId, const Vec2 &to)

@@ -38,7 +38,7 @@ namespace ACCAD
 
         /* Return if a point is inside the ellipse
          */
-        bool isInsize(const Vec2& point) override;
+        bool isInside(const Vec2& point) override;
 
         /* Returns the TYPE (enum FigureType) of this Figure
         */

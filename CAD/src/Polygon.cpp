@@ -81,7 +81,7 @@ namespace ACCAD
         updated = true;
     }
 
-    bool Polygon::isInsize(const Vec2 & point)
+    bool Polygon::isInside(const Vec2 & point)
     {
         int   i, j = vertices.size() - 1;
         bool  oddNodes = false;
