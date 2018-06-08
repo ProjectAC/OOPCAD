@@ -28,21 +28,33 @@ namespace ACCAD
          */
         void alterPixels(const std::vector<Vec2i> &pixels, const Color &color);
 
-        /* Insert a figure
+        /* Insert a figure. Return the index of the figure in vector.
          */
-        void insertFigure(IFigure *figure);
+        int insertFigure(IFigure *figure);
 
         /* Alter an Anchor of a Polygon
          */
-        void alterFigure(Polygon *figure, int anchorId, const Vec2 &to);
+        void alterFigure(int index, int anchorId, const Vec2 &to);
 
         /* Resize a figure
          */
-        void resizeFigure(IFigure *figure, int anchorId, const Vec2 &to);
+        void resizeFigure(int index, int anchorId, const Vec2 &to);
+
+        /* Rotate a figure
+        */
+        void rotateFigure(int index, int anchorId, const Vec2 &to);
+
+        /* Move a figure
+        */
+        void moveFigure(int index, const Vec2 &from, const Vec2 &to);
+
+        /* Replace a figure.
+         */
+        void assignFigure(int index, IFigure* target);
 
         /* Erase a figure
          */
-        void eraseFigure(IFigure *figure);
+        void eraseFigure(int index);
 
         Color& at(unsigned int x, unsigned int y);
         Color& at(const Vec2i& v2i);
@@ -52,7 +64,6 @@ namespace ACCAD
         unsigned int getWidth() const;
         unsigned int getHeight() const;
 
-        void overwriteFigure(int index, IFigure* target);
         IFigure* getFigure(int index);
 
     private:

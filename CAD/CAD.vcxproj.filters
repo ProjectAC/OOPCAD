@@ -84,6 +84,9 @@
     <ClInclude Include="include\StrokeManager.h">
       <Filter>头文件\include</Filter>
     </ClInclude>
+    <ClInclude Include="include\AlterManager.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -126,6 +129,9 @@
       <Filter>源文件\src</Filter>
     </ClCompile>
     <ClCompile Include="src\StrokeManager.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AlterManager.cpp">
       <Filter>源文件\src</Filter>
     </ClCompile>
   </ItemGroup>

@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CAD.h" />
+    <ClInclude Include="include\AlterManager.h" />
     <ClInclude Include="include\Alternation.h" />
     <ClInclude Include="include\Creation.h" />
     <ClInclude Include="include\definitions.h" />
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CAD.cpp" />
+    <ClCompile Include="src\AlterManager.cpp" />
     <ClCompile Include="src\Alternation.cpp" />
     <ClCompile Include="src\definitions.cpp" />
     <ClCompile Include="src\Editor.cpp" />

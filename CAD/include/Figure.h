@@ -59,6 +59,8 @@ namespace ACCAD
 
         void rotate(int id, const Vec2 &to);
 
+        void move(const Vec2& from, const Vec2& to);
+
         IFigure(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner);
 
         virtual IFigure* Clone() = 0;

@@ -8,7 +8,7 @@
 #include "Loader.h"
 #include "Operation.h"
 #include "Brush.h"
-#include "Alternation.h"
+#include "AlterManager.h"
 #include "StrokeManager.h"
 
 namespace ACCAD
@@ -16,6 +16,7 @@ namespace ACCAD
     class Editor
     {
     public:
+#pragma region PEN
         /* Start drawing. Save all drawing infomation. 
          */
         void startDraw();
@@ -29,6 +30,7 @@ namespace ACCAD
          */
         void setPen(const Pen& pen);
         Pen getPen();
+#pragma endregion
 
         /* Insert an ellipse. Set selectedFigure as this figure and enter alternation mode.
          * finishAlter should be called after calling this function.
@@ -49,20 +51,26 @@ namespace ACCAD
          */
         void addVertex(const Vec2i& vertex);
 
-        enum AlterMode
+#pragma region Alter
+        enum MouseButton
         {
-            Vertex,
-            Border,
+            Left,
+            Right
         };
-        /* Start altering a figure.
+        /* Start altering the selected figure.
          */
-        void startAlter(AlterMode alterMode);
-        /* Finish altering a figure.
+        void startAlter(MouseButton mouse);
+        /* Finish altering the selected figure.
          */
         void finishAlter();
         /* Alter the selected figure
          */
         void AlterFigure(const Vec2i& from, const Vec2i& to);
+
+        /* Set AlterMode according to mouse input.
+        */
+        void setAlterMode(const Vec2i& point, MouseButton mouse);
+#pragma endregion
 
         /* Erase the selected figure
          */
@@ -72,24 +80,11 @@ namespace ACCAD
          * If not, return -1, else return the index of the figure in image.
          */
         int SelectFigure(const Vec2i& point);
-        /* Set the index which refer to the selected figure
-         */
-        void setSelectedIndex(int index);
 
     private:
-        /* Resize an Anchor of a figure
-         */
-        void resizeFigure(int figure, int anchorId, const Vec2 &to);
-        /* Alter an Anchor of a figure
-         */
-        void alterFigure(int figure, int anchorId, const Vec2 &to);
-        /* Rotate an Anchor of a figure
-         */
-        void rotateFigure(int figure, int anchorId, const Vec2 &to);
-
         /* Erase a figure
-         */
-        void eraseFigure(int figure);
+        */
+        void eraseFigure(IFigure* figure);
 
         Image image;
         Renderer renderer;
@@ -97,13 +92,12 @@ namespace ACCAD
         
         int selectedIndex;
         Pen pen;
-        std::vector<Vec2i> tempVertexes;
-        
         StrokeManager strokeManager;
+        AlterManager alterManager;
         
         /* This is my self-designed Stack,
          * Not STL!!!
          */
-        Stack<IOperation> stack; 
+        Stack<IOperation> stack; //TODO
     };
 }

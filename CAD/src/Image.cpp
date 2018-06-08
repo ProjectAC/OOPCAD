@@ -41,25 +41,39 @@ namespace ACCAD
             this->at(p) = color;
     }
 
-    void Image::insertFigure(IFigure *figure)
-    {
+    int Image::insertFigure(IFigure *figure)
+    {    
         figures.push_back(figure);
+        return figures.size() - 1;
     }
 
-    void Image::alterFigure(Polygon *figure, int anchorId, const Vec2 &to)
+    void Image::alterFigure(int index, int anchorId, const Vec2 &to)
     {
+        Polygon* figure = static_cast<Polygon*>(figures[index]);
         figure->alter(anchorId, to);
     }
 
-    void Image::resizeFigure(IFigure * figure, int anchorId, const Vec2 & to)
+    void Image::resizeFigure(int index, int anchorId, const Vec2 & to)
     {
+        auto figure = figures[index];
         figure->resize(anchorId, to);
     }
 
-    void Image::eraseFigure(IFigure *figure)
+    void Image::rotateFigure(int index, int anchorId, const Vec2 & to)
     {
-        auto iter = find(figures.begin(), figures.end(), figure);
-        figures.erase(iter);
+        auto figure = figures[index];
+        figure->rotate(anchorId, to);
+    }
+
+    void Image::moveFigure(int index, const Vec2 & from, const Vec2 & to)
+    {
+        auto figure = figures[index];
+        figure->move(from, to);
+    }
+
+    void Image::eraseFigure(int index)
+    {
+        figures.erase(figures.begin() + index);
     }
 
     unsigned int Image::getWidth() const
@@ -72,7 +86,7 @@ namespace ACCAD
         return this->height;
     }
 
-    void Image::overwriteFigure(int index, IFigure * target)
+    void Image::assignFigure(int index, IFigure * target)
     {
         delete figures[index];
         figures[index] = target->Clone();

@@ -30,7 +30,6 @@ void ACCAD::Editor::finishDraw()
     Stroke* stroke = strokeManager.finishDraw();
     if (stroke != nullptr)
     {
-        //TODO:
         stack.pushback(stroke);
     }
 }
@@ -55,7 +54,7 @@ void ACCAD::Editor::movePen(const Vec2i & from, const Vec2i & to)
             {
                 queue.push(point);
                 hashtable.insert(point);
-                strokeManager.addPixel(point, image.at(point), pen.color, image);
+                strokeManager.addPixel(point, image.at(point), pen.color);
             }
         }
     }
@@ -72,25 +71,56 @@ Pen ACCAD::Editor::getPen()
     return this->pen;
 }
 
-void ACCAD::Editor::insertEllipse(const Vec2i & center)
+void ACCAD::Editor::startAlter(MouseButton mouse)
 {
-    
-}
-
-void ACCAD::Editor::startAlter(AlterMode alterMode)
-{
-    alter = new Alternation(image.getFigure(selectedIndex), selectedIndex);
+    AlterManager::AlterMode alterMode;
+    switch (mouse)
+    {
+    case ACCAD::Editor::Left:
+        alterMode = AlterManager::Move;
+        break;
+    case ACCAD::Editor::Right:
+        alterMode = AlterManager::Vertex;
+        break;
+    default:
+        alterMode = AlterManager::Move;
+        break;
+    }
+    alterManager.startAlter(selectedIndex, alterMode);
 }
 
 void ACCAD::Editor::finishAlter()
 {
-    alter->AddTarget(image.getFigure(selectedIndex));
+    Alternation* alter = alterManager.finishAlter();
+    if (alter != nullptr)
+    {
+        stack.pushback(alter);
+    }
 }
 
 void ACCAD::Editor::AlterFigure(const Vec2i & from, const Vec2i & to)
 {
-    //根据像素坐标判断作何种修改，然后调用image的接口修改figure
-    //渲染？
+    alterManager.AlterFigure(from, to);
+}
+
+void ACCAD::Editor::setAlterMode(const Vec2i & point, MouseButton mouse)
+{
+    //操作方式：
+    //左键：
+    //  8个锚点为圆心的8个圆：缩放
+    //  4个角外部的扇形区域：旋转
+    //  图形内部：移动
+    //右键：
+    //  多边形指定顶点移动
+    switch (mouse)
+    {
+    case MouseButton::Left:
+        break;
+    case MouseButton::Right:
+        break;
+    default:
+        break;
+    }
 }
 
 int ACCAD::Editor::SelectFigure(const Vec2i & point)

@@ -31,6 +31,5 @@ namespace ACCAD
         IFigure* target;
         IFigure* origin;
         int index;
-        bool isTargetNull;
     };
 }
