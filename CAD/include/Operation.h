@@ -7,9 +7,9 @@ namespace ACCAD
     class IOperation
     {
     public:
-        /* Execute this operation
+        /* Redo this operation
          */
-        virtual void exec(Image &image) = 0;
+        virtual void redo(Image &image) = 0;
 
         /* Undo this operation
          */ 

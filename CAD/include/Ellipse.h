@@ -36,9 +36,17 @@ namespace ACCAD
          */
         void resize(int id, const Vec2 &to) override;
 
+        /* Return if a point is inside the ellipse
+         */
+        bool isInside(const Vec2& point) override;
+
         /* Returns the TYPE (enum FigureType) of this Figure
         */
         FigureType getType() override;
+
+        /* Deep copy a ellipse;
+        */
+        Ellipse* Clone() override;
 
         /* [Constructor]
          * Construct an ellipse with a, b, and theta

@@ -141,18 +141,23 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Test.h" />
+    <ClInclude Include="CAD.h" />
+    <ClInclude Include="include\AlterManager.h" />
     <ClInclude Include="include\Alternation.h" />
     <ClInclude Include="include\Creation.h" />
     <ClInclude Include="include\definitions.h" />
     <ClInclude Include="include\Editor.h" />
     <ClInclude Include="include\Ellipse.h" />
+    <ClInclude Include="include\Erasion.h" />
     <ClInclude Include="include\Figure.h" />
     <ClInclude Include="include\Image.h" />
+    <ClInclude Include="include\Insertion.h" />
     <ClInclude Include="include\Operation.h" />
+    <ClInclude Include="include\Brush.h" />
     <ClInclude Include="include\Polygon.h" />
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Stroke.h" />
+    <ClInclude Include="include\StrokeManager.h" />
     <ClInclude Include="include\Utility.h" />
     <ClInclude Include="include\Vec2.h" />
     <ClInclude Include="Resource.h" />
@@ -160,13 +165,20 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CAD.cpp" />
+    <ClCompile Include="src\AlterManager.cpp" />
+    <ClCompile Include="src\Alternation.cpp" />
     <ClCompile Include="src\definitions.cpp" />
+    <ClCompile Include="src\Editor.cpp" />
     <ClCompile Include="src\Ellipse.cpp" />
+    <ClCompile Include="src\Erasion.cpp" />
     <ClCompile Include="src\Figure.cpp" />
     <ClCompile Include="src\Image.cpp" />
+    <ClCompile Include="src\Insertion.cpp" />
     <ClCompile Include="src\Polygon.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Stroke.cpp" />
+    <ClCompile Include="src\StrokeManager.cpp" />
     <ClCompile Include="src\Utility.cpp" />
     <ClCompile Include="src\Vec2.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -175,7 +187,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CAD.rc" />

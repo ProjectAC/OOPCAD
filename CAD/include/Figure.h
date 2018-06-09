@@ -59,9 +59,16 @@ namespace ACCAD
 
         void rotate(int id, const Vec2 &to);
 
+        void move(const Vec2& from, const Vec2& to);
+
+        virtual bool isInside(const Vec2& point) = 0;
+
+        virtual IFigure* Clone() = 0;
+
         /* Constructor with details
          */
         IFigure(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner);
+
 
         /* Default constructor
          */

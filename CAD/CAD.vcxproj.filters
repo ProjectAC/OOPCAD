@@ -33,6 +33,9 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CAD.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="include\Alternation.h">
       <Filter>头文件\include</Filter>
     </ClInclude>
@@ -72,12 +75,27 @@
     <ClInclude Include="include\Vec2.h">
       <Filter>头文件\include</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="include\Brush.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StrokeManager.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AlterManager.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Erasion.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Insertion.h">
+      <Filter>头文件\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CAD.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\definitions.cpp">
@@ -104,10 +122,25 @@
     <ClCompile Include="src\Image.cpp">
       <Filter>源文件\src</Filter>
     </ClCompile>
-    <ClCompile Include="Test.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\Stroke.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Alternation.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StrokeManager.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AlterManager.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Erasion.cpp">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Insertion.cpp">
       <Filter>源文件\src</Filter>
     </ClCompile>
   </ItemGroup>

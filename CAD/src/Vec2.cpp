@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "../stdafx.h"
 
 #include <cstdlib>
 #include "../include/Vec2.h"
@@ -12,6 +12,12 @@ namespace ACCAD
     {
         this->x = x;
         this->y = y;
+    }
+
+    Vec2::Vec2(Vec2i v2i)
+    {
+        x = (float)v2i.x;
+        y = (float)v2i.y;
     }
 
     istream & ACCAD::operator>>(istream & in, Vec2 & vec2)
@@ -85,10 +91,36 @@ namespace ACCAD
         return { fabs(x), fabs(y) };
     }
 
+    int dot(const Vec2i & a, const Vec2i & b)
+    {
+        return a.x*b.x + a.y*b.y;
+    }
+
     Vec2i::Vec2i(int x, int y)
     {
         this->x = x;
         this->y = y;
+    }
+
+    bool Vec2i::operator==(const Vec2i & p) const
+    {
+        return x == p.x&&y == p.y;
+    }
+    Vec2i Vec2i::operator+(const Vec2i & b) const
+    {
+        return { x + b.x, y + b.y };
+    }
+    Vec2i Vec2i::operator-(const Vec2i & b) const
+    {
+        return { x - b.x, y - b.y };
+    }
+    int Vec2i::sqrLength() const
+    {
+        return x * x + y * y;
+    }
+    float Vec2i::length() const
+    {
+        return sqrt(sqrLength());
     }
 }
 

@@ -18,6 +18,11 @@ namespace ACCAD
         theta = atan2(tmp.y, tmp.x);
     }
 
+    void IFigure::move(const Vec2 & from, const Vec2 & to)
+    {
+        center = center + (to - from);
+    }
+
     IFigure::IFigure(const Vec2 & center, float theta, const Color &cborder, const Color &cinner) :
         center(center),
         theta(theta),

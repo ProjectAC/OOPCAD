@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Operation.h"
-#include "Figure.h"
 #include <vector>
 
 namespace ACCAD
@@ -20,7 +19,10 @@ namespace ACCAD
 
         /* [Constructor]
          */
-        Stroke(const std::vector<std::pair<Vec2i, Color> > &origin, const Color &target);
+        Stroke(const std::vector<std::pair<Vec2i, Color> > &origin, const std::vector<std::pair<Vec2i, Color> > &target);
+        Stroke();
+
+        void addPixel(const std::pair<Vec2i, Color>& origin, const std::pair<Vec2i, Color>& target);
 
     private:
         std::vector<std::pair<Vec2i, Color> > origin;

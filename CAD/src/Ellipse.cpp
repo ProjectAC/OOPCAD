@@ -69,9 +69,19 @@ namespace ACCAD
         updated = true;
     }
 
+    bool Ellipse::isInside(const Vec2 & point)
+    {
+        return pow((point.x - center.x) / a, 2) + pow((point.y - center.y) / b, 2) < 1;
+    }
+
     FigureType Ellipse::getType()
     {
         return ELLIPSE;
+    }
+
+    Ellipse * Ellipse::Clone()
+    {
+        return new Ellipse(*this);
     }
 
     Ellipse::Ellipse(const Vec2 & pos, float theta, const Color &cborder, const Color &cinner, float a, float b) :
