@@ -96,6 +96,11 @@ namespace ACCAD
         return this->height;
     }
 
+    unsigned int Image::getFigureCount() const
+    {
+        return figures.size();
+    }
+
     void Image::assignFigure(int index, IFigure * target)
     {
         delete figures[index];

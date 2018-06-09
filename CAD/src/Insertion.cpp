@@ -1,6 +1,6 @@
 #include "..\include\Insertion.h"
 
-void ACCAD::Insertion::exec(Image & image)
+void ACCAD::Insertion::redo(Image & image)
 {
     index = image.insertFigure(target);
 }

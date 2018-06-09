@@ -1,6 +1,6 @@
 #include "..\include\Erasion.h"
 
-void ACCAD::Erasion::exec(Image & image)
+void ACCAD::Erasion::redo(Image & image)
 {
     image.eraseFigure(index);
 }

@@ -8,12 +8,12 @@ ACCAD::AlterManager::AlterManager(Image & image)
     this->image = &image;
 }
 
-void ACCAD::AlterManager::startAlter(int index, AlterMode alterMode)
+void ACCAD::AlterManager::startAlter(int index, AlterMode alterMode, int anchorID)
 {
     isDirty = false;
     currentAlter = new Alternation(image->getFigure(index), index);
     this->alterMode = alterMode;
-    this->anchorID = -1;
+    this->anchorID = anchorID;
 }
 
 Alternation * ACCAD::AlterManager::finishAlter()
@@ -41,23 +41,32 @@ void ACCAD::AlterManager::AlterFigure(const Vec2i & from, const Vec2i & to)
     switch (alterMode)
     {
     case ACCAD::AlterManager::Vertex:
-        static_cast<Polygon*>(selectedFigure)->alter(anchorID, selectedFigure->getBorder(anchorID) + to - from);
+        if (anchorID != -1)
+        {
+            static_cast<Polygon*>(selectedFigure)->alter(anchorID, selectedFigure->getBorder(anchorID) + to - from);
+            if ((to - from).sqrLength != 0) isDirty = true;
+        }
         break;
     case ACCAD::AlterManager::Resize:
-        selectedFigure->resize(anchorID, selectedFigure->getBorder(anchorID) + to - from);
-        break;
+        if (anchorID != -1)
+        {
+            selectedFigure->resize(anchorID, selectedFigure->getBorder(anchorID) + to - from);
+            if ((to - from).sqrLength != 0) isDirty = true;
+            break;
+        }
     case ACCAD::AlterManager::Rotate:
-        selectedFigure->rotate(anchorID, selectedFigure->getBorder(anchorID) + to - from);
-        break;
+        if (anchorID != -1)
+        {
+            selectedFigure->rotate(anchorID, selectedFigure->getBorder(anchorID) + to - from);S
+            if ((to - from).sqrLength != 0) isDirty = true;
+            break;
+        }
     case ACCAD::AlterManager::Move:
         selectedFigure->move(from, to);
+        if ((to - from).sqrLength != 0) isDirty = true;
         break;
     default:
         break;
-    }
-    if (alterMode!=None && (to - from).sqrLength != 0)
-    {
-        isDirty = true;
     }
 }
 
@@ -82,4 +91,9 @@ std::vector<Vec2> ACCAD::AlterManager::getAnchors()
     default:
         return {};
     }
+}
+
+AlterManager::AlterMode ACCAD::AlterManager::getAlterMode()
+{
+    return alterMode;
 }

@@ -152,7 +152,6 @@
     <ClInclude Include="include\Figure.h" />
     <ClInclude Include="include\Image.h" />
     <ClInclude Include="include\Insertion.h" />
-    <ClInclude Include="include\Loader.h" />
     <ClInclude Include="include\Operation.h" />
     <ClInclude Include="include\Brush.h" />
     <ClInclude Include="include\Polygon.h" />

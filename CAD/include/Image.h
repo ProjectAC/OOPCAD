@@ -64,6 +64,7 @@ namespace ACCAD
 
         unsigned int getWidth() const;
         unsigned int getHeight() const;
+        unsigned int getFigureCount() const;
 
         IFigure* getFigure(int index);
 

@@ -20,7 +20,7 @@ namespace ACCAD
 
         /* Start altering a figure.
         */
-        void startAlter(int index, AlterMode alterMode);
+        void startAlter(int index, AlterMode alterMode, int anchorID);
         /* Finish altering a figure.
         */
         Alternation * finishAlter();
@@ -37,6 +37,8 @@ namespace ACCAD
         /* Get active anchors according to alter mode and figure selected
         */
         std::vector<Vec2> getAnchors();
+
+        AlterMode getAlterMode();
 
     private:
         Alternation * currentAlter;

@@ -1,6 +1,7 @@
 #include "../include/Editor.h"
 #include <queue>
 #include <algorithm>
+
 using namespace std;
 using namespace ACCAD;
 
@@ -71,11 +72,56 @@ Pen ACCAD::Editor::getPen()
     return this->pen;
 }
 
-Figure* 
-
-void ACCAD::Editor::insertFigure(FigureType figureType, const Vec2i & center)
+IFigure* GenerateFigure(FigureType figureType, const Vec2i & center, const Color & cborder, const Color & cinner, float a, float b)
 {
-    
+    switch (figureType)
+    {
+    case ACCAD::ELLIPSE:
+        return new ACCAD::Ellipse(center, 0.0f, cborder, cinner, a, b);
+    case ACCAD::POLYGON:
+        return new ACCAD::Polygon(cborder, cinner, { Vec2(center) + Vec2(a,b), Vec2(center) + Vec2(-a,b), Vec2(center) + Vec2(-a,-b), Vec2(center) + Vec2(a,-b) });
+    default:
+        return nullptr;
+    }
+}
+
+void ACCAD::Editor::insertFigure(FigureType figureType, const Vec2i & center, float a, float b)
+{
+    IFigure * figure = GenerateFigure(figureType, center, foreground, background, a, b);
+    selectedIndex = image.insertFigure(figure);
+    alterManager.startAlter(selectedIndex, AlterManager::Resize, 7);
+}
+
+void ACCAD::Editor::finishInsert()
+{
+    Alternation* tmpAlter = alterManager.finishAlter();
+    delete tmpAlter;
+    Insertion* insert = new Insertion(image.getFigure(selectedIndex));
+    stack.pushback(insert);
+}
+
+void ACCAD::Editor::startPolygon()
+{
+    insertBuffer.clear();
+}
+
+void ACCAD::Editor::finishPolygon()
+{
+    Polygon figure(foreground, background, insertBuffer);
+    selectedIndex = image.insertFigure(&figure);
+    alterManager.startAlter(selectedIndex, AlterManager::Vertex, 0);
+}
+
+void ACCAD::Editor::addVertex(const Vec2i & vertex)
+{
+    if (!insertBuffer.empty() && (Vec2(vertex) - insertBuffer[0]).length() < AnchorThreshold)
+    {
+        finishPolygon();
+    }
+    else
+    {
+        insertBuffer.push_back(vertex);
+    }
 }
 
 void ACCAD::Editor::startAlter(MouseKeys mouse)
@@ -93,7 +139,7 @@ void ACCAD::Editor::startAlter(MouseKeys mouse)
         alterMode = AlterManager::Move;
         break;
     }
-    alterManager.startAlter(selectedIndex, alterMode);
+    alterManager.startAlter(selectedIndex, alterMode, -1);
 }
 
 void ACCAD::Editor::finishAlter()
@@ -130,7 +176,7 @@ void ACCAD::Editor::setAlterMode(const Vec2i & point, MouseKeys mouse)
             auto anchors = figure->getBorder();
             for (int i = 0; i < anchors.size(); i++)
             {
-                if ((anchors[i] - point).length() < anchorThreshold)
+                if ((anchors[i] - point).length() < AnchorThreshold)
                 {
                     alterMode = AlterManager::Resize;
                     anchorID = i;
@@ -144,7 +190,7 @@ void ACCAD::Editor::setAlterMode(const Vec2i & point, MouseKeys mouse)
             auto r = Vec2(point) - center;
             for (int i = 1; i < anchors.size(); i+=2)
             {
-                if ((anchors[i] - point).length() < resizeThreshold && 
+                if ((anchors[i] - point).length() < ResizeThreshold && 
                     abs(r.x)>a &&
                     abs(r.y)>b)
                 {
@@ -154,7 +200,7 @@ void ACCAD::Editor::setAlterMode(const Vec2i & point, MouseKeys mouse)
                 }
             }
 
-            if (figure->isInsize(point))
+            if (figure->isInside(point))
             {
                 alterMode = AlterManager::Move;
                 goto OutsideSwitch;
@@ -169,7 +215,7 @@ void ACCAD::Editor::setAlterMode(const Vec2i & point, MouseKeys mouse)
                 auto anchors = static_cast<Polygon*>(figure)->getAnchors();
                 for (int i = 0; i < anchors.size(); i++)
                 {
-                    if ((anchors[i] - point).length() < anchorThreshold)
+                    if ((anchors[i] - point).length() < AnchorThreshold)
                     {
                         alterMode = AlterManager::Vertex;
                         anchorID = i;
@@ -186,12 +232,44 @@ OutsideSwitch:
     alterManager.setAlterMode(alterMode,anchorID);
 }
 
-void ACCAD::Editor::eraseSelectedFigure()
+void ACCAD::Editor::eraseFigure()
 {
     if (selectedIndex != -1)
     {
         Erasion * erasion = new Erasion(image.getFigure(selectedIndex), selectedIndex);
-        erasion->exec(image);
+        image.eraseFigure(selectedIndex);
         stack.pushback(erasion);
     }
+}
+
+int ACCAD::Editor::SelectFigure(const Vec2i & point)
+{
+    for (int i = image.getFigureCount() - 1; i >= 0; i--)
+    {
+        if (image.getFigure(i)->isInside(point))
+        {
+            selectedIndex = i;
+            return i;
+        }
+    }
+}
+
+Color ACCAD::Editor::getForegroundColor()
+{
+    return foreground;
+}
+
+Color ACCAD::Editor::getBackgroundColor()
+{
+    return background;
+}
+
+void ACCAD::Editor::setForegroundColor(const Color & color)
+{
+    foreground = color;
+}
+
+void ACCAD::Editor::setBackgroundColor(const Color & color)
+{
+    background = color;
 }

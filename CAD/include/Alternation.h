@@ -10,9 +10,9 @@ namespace ACCAD
     {
     public:
 
-        /* Create this Figure
+        /* Alter this Figure
          */
-        void exec(Image &image) override;
+        void redo(Image &image) override;
 
         /* Cancel this creation
          */

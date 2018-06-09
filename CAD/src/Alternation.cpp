@@ -1,6 +1,6 @@
 #include "..\include\Alternation.h"
 
-void ACCAD::Alternation::exec(Image & image)
+void ACCAD::Alternation::redo(Image & image)
 {
     image.assignFigure(index, target);
 }

@@ -41,7 +41,7 @@ void ACCAD::StrokeManager::addPixels(const std::vector<Vec2i> &pixels, const Col
 {
     for (auto pixel : pixels)
     {
-        addPixel(pixel, originColor, targetColor, image);
+        addPixel(pixel, originColor, targetColor);
     }
 }
 
@@ -50,7 +50,7 @@ void ACCAD::StrokeManager::addPixel(const Vec2i & pixel, const Color & originCol
     if (Hashtable.find(pixel) == Hashtable.end())
     {
         currentStroke->addPixel({ pixel,originColor }, { pixel,Blend(originColor,targetColor) });
-        image.alterPixel(pixel, Blend(originColor, targetColor));
+        image->alterPixel(pixel, Blend(originColor, targetColor));
         Hashtable.insert(pixel);
     }
 }
